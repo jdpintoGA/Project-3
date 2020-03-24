@@ -58,7 +58,6 @@ function edit(req, res) {
       res.status(202).send(event)
     })
 }
-
 module.exports = {
   index,
   create,

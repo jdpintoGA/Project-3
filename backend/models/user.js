@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt')
 const schema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, minLength: 6, unique: true },
-  password: { type: String, required: true, hide: true },
+  password: { type: String, required: true, hide: true }
 })
 
 schema.plugin(require('mongoose-unique-validator'))

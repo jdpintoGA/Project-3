@@ -3,7 +3,6 @@ const router = require('express').Router()
 const eventController = require('./controllers/eventController')
 const userController = require('./controllers/userController')
 // import secure route, for members only / private routes
-
 // I add this in front of each secure route to activate that middleware
 
 const secureRoute = require('./lib/secureRoute')

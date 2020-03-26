@@ -63,5 +63,5 @@ module.exports = {
   create,
   find,
   singleDelete,
-  edit,
+  edit
 }

@@ -9,7 +9,7 @@ mongoose.connect(
   err => {
     if (err) console.log(err)
     else console.log('Mongoose connected to events-db!')
-  },
+  }
 )
 
 // Initialise our server

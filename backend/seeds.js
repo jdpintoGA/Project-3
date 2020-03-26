@@ -19,7 +19,7 @@ mongoose.connect(
             eventDescription: 'Race Simulator',
             platform: 'Steam',
             date: 19042020,
-            userName: 'BabumbaBab',
+            userName: 'BabumbaBab'
           },
           {
             eventName: 'Best FIFA 2020',
@@ -27,7 +27,7 @@ mongoose.connect(
             eventDescription: 'FIFA Simulator',
             platform: 'PC',
             date: 21052020,
-            userName: 'BabumbaBab',
+            userName: 'BabumbaBab'
           },
           {
             eventName: 'Best FIFA 2019',
@@ -35,7 +35,7 @@ mongoose.connect(
             eventDescription: 'FIFA Simulator',
             platform: 'xbox',
             date: 14042020,
-            userName: 'HydrAKZR',
+            userName: 'HydrAKZR'
           },
           {
             eventName: 'LoL 2 Death Tournament',
@@ -43,13 +43,13 @@ mongoose.connect(
             eventDescription: 'MOBA',
             platform: 'PC',
             date: 11042020,
-            userName: 'HydrAKZR',
-          },
+            userName: 'HydrAKZR'
+          }
         ])
       })
       .then(events => console.log(`${'🎮'.repeat(events.length)} created`))
       .then(() => console.log('Goodbye!'))
       .catch(err => console.log(err))
       .finally(() => mongoose.connection.close())
-  },
+  }
 )

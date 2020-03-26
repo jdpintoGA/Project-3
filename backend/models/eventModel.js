@@ -7,7 +7,7 @@ const schema = new mongoose.Schema({
   platform: { type: String, required: false },
   location: { type: String, required: false },
   date: { type: Number, required: true },
-  userName: { type: String, required: true },
+  userName: { type: String, required: true }
 })
 
 module.exports = mongoose.model('EventModel', schema)

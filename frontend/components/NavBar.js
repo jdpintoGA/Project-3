@@ -26,6 +26,9 @@ const NavBar = () => {
 
       <nav className="nav-m">
         <div className="nav-ul-m">
+          <Link className="link-m" to="/">
+            HOME
+          </Link>
           <Link className="link-m" to="/events">
             EVENTS
           </Link>

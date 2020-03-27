@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+import NavBar from './NavBar'
+import { Link } from 'react-router-dom'
 
 class Register extends React.Component {
   constructor() {
@@ -33,72 +35,97 @@ class Register extends React.Component {
   render() {
     const { errors } = this.state
     return (
-      <section className="section">
-        <div className="container">
-          <h1 className="title">Register</h1>
-          <form className="form" onSubmit={event => this.handleSubmit(event)}>
-            <div className="field">
-              <label className="label">Email</label>
-              <div className="control">
-                <input
-                  onChange={event => this.handleChange(event)}
-                  type="text"
-                  name="email"
-                  className="input"
-                />
-              </div>
-              {errors.email && (
-                <small className="help is-danger">{errors.email}</small>
-              )}
+      <div className="container">
+        <NavBar />
+
+        <div className="section loginPageJ">
+          <div className="loginSectionJ">
+            <div className="fillJ"></div>
+            <div className="contentJ">
+              <h1 className="title">Register</h1>
+              <form
+                className="form"
+                onSubmit={event => this.handleSubmit(event)}
+              >
+                <div className="field">
+                  <label className="label">Email</label>
+                  <div className="control">
+                    <input
+                      onChange={event => this.handleChange(event)}
+                      type="text"
+                      name="email"
+                      className="input"
+                    />
+                  </div>
+                  {errors.email && (
+                    <small className="help is-danger">{errors.email}</small>
+                  )}
+                </div>
+                <div className="field">
+                  <label className="label">Username</label>
+                  <div className="control">
+                    <input
+                      onChange={event => this.handleChange(event)}
+                      type="text"
+                      name="username"
+                      className="input"
+                    />
+                  </div>
+                  {errors.username && (
+                    <small className="help is-danger">{errors.username}</small>
+                  )}
+                </div>
+                <div className="field">
+                  <label className="label">Password</label>
+                  <div className="control">
+                    <input
+                      onChange={event => this.handleChange(event)}
+                      type="password"
+                      name="password"
+                      className="input"
+                    />
+                  </div>
+                  {errors.password && (
+                    <small className="help is-danger">{errors.password}</small>
+                  )}
+                </div>
+                <div className="field">
+                  <label className="label">Confirm Password</label>
+                  <div className="control">
+                    <input
+                      onChange={event => this.handleChange(event)}
+                      type="password"
+                      name="passwordConfirmation"
+                      className="input"
+                    />
+                  </div>
+                  {errors.passwordConfirmation && (
+                    <small className="help is-danger">
+                      {errors.passwordConfirmation}
+                    </small>
+                  )}
+                </div>
+                <button className="buttonJ">Register</button>
+              </form>
             </div>
-            <div className="field">
-              <label className="label">Username</label>
-              <div className="control">
-                <input
-                  onChange={event => this.handleChange(event)}
-                  type="text"
-                  name="username"
-                  className="input"
-                />
+            <div className="fillJ"></div>
+          </div>
+          <div className="wrapRegisterJ">
+            <div className="fillJ"></div>
+            <div className="registerSectionJ">
+              <div className="fillJ"></div>
+              <div className="toRegJ">
+                <h3>
+                  Have an account? <Link to="/login"> Sign in </Link>
+                  instead!
+                </h3>
               </div>
-              {errors.username && (
-                <small className="help is-danger">{errors.username}</small>
-              )}
+              <div className="fillJ"></div>
             </div>
-            <div className="field">
-              <label className="label">Password</label>
-              <div className="control">
-                <input
-                  onChange={event => this.handleChange(event)}
-                  type="password"
-                  name="password"
-                  className="input"
-                />
-              </div>
-              {errors.password && (
-                <small className="help is-danger">{errors.password}</small>
-              )}
-            </div>
-            <div className="field">
-              <label className="label">Confirm Password</label>
-              <div className="control">
-                <input
-                  onChange={event => this.handleChange(event)}
-                  type="password"
-                  name="passwordConfirmation"
-                  className="input"
-                />
-              </div>
-              {errors.passwordConfirmation && (
-                <small className="help is-danger">
-                  {errors.passwordConfirmation}
-                </small>
-              )}
-            </div>
-            <button className="button is-success">Register</button>
-          </form>
+            <div className="fillJ"></div>
+          </div>
         </div>
-      </section>
+      </div>
     )
   }
 }

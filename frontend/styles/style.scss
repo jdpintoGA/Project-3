@@ -1,11 +1,11 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 .container {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   perspective: 1000px;
@@ -30,7 +30,7 @@
 
 #check + label svg path {
   transform-origin: 35% 50%;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 #check:checked + label svg #one {
@@ -49,35 +49,44 @@
 
 .nav {
   position: absolute;
-  width: 25vw;
-  background: rgb(241, 85, 24);
+  width: 24vw;
+  background: linear-gradient(
+    217deg,
+    rgba(241, 85, 24, 1),
+    // rgba(255, 255, 24, 0.9),
+    rgba(0, 0, 0, 0) 89.71%
+  );
+
   height: 100vh;
   padding: 80px 20px;
   display: flex;
   flex-direction: column;
-  transition: .5s;
+  transition: 0.5s;
   transform: translateX(-100%);
 }
 
 #check:checked + label ~ .nav {
-  transform: translateX(0%)
+  transform: translateX(0%);
 }
 
-.link{
+.link {
   text-decoration: none;
-  color: #000;
+  color: rgb(255, 255, 255);
   padding: 10px;
   font-size: 24px;
   font-weight: 700;
-  transition: .5s;
+  transition: 0.5s;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
+  border-top: 1px solid rgba(0, 0, 0, 0);
 }
 
 .link:hover {
   transform: translateX(10px);
-  color: rgb(236, 76, 236);
+  color: rgb(0, 0, 0);
+  border-bottom: 2px solid rgba(0, 0, 0, 1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 // end sideBar
-
 
 // start homePage
 .section {
@@ -87,14 +96,14 @@
   transform-origin: left;
   // background-size: cover;
   // background-repeat: no-repeat;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin:  0 auto;
+  margin: 0 auto;
   padding: 2em 4em;
   max-width: 800px;
   height: 100%;
@@ -115,7 +124,6 @@
   color: white;
 }
 
-
 .container-event {
   margin-top: 150px;
   background-color: pink;
@@ -123,16 +131,120 @@
   width: 600px;
 }
 
-
 #check:checked + label ~ .section {
   z-index: -1;
   transform: rotateY(30deg) translateX(25vw);
-  
 }
-
-
 
 //end homePage
 
+//login & register pages
 
-       
+.loginPageJ,
+.registerPageJ {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(241, 85, 24);
+  display: flex;
+
+  justify-content: space-between;
+  .loginSectionJ {
+    z-index: 1;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-grow: 1;
+    height: 100%;
+    color: rgb(0, 0, 0);
+    // background-color: rgb(255, 159, 121);
+    border-right: 13px solid rgb(46, 46, 46);
+
+    border-radius: 50%;
+
+    .contentJ {
+      display: flex;
+      flex-flow: column;
+      align-items: flex-end;
+      text-align: right;
+      // background-color: rgb(255, 255, 255);
+      border-right: 20px solid rgb(0, 0, 0);
+      border-radius: 50%;
+      padding-top: 75px;
+      padding-bottom: 75px;
+      padding-right: 25%;
+      width: 100%;
+      margin-right: -25px;
+      min-height: 350px;
+
+      .loginTitleJ {
+        color: rgb(255, 255, 255);
+        padding-bottom: 5px;
+      }
+
+      .fieldJ {
+        color: rgb(46, 46, 46);
+      }
+      input {
+        min-width: 150px;
+        min-height: 20px;
+        &:hover {
+          background-color: rgb(170, 170, 170);
+        }
+      }
+
+      .buttonJ {
+        background-color: black;
+        color: rgb(255, 255, 255);
+        margin-top: 2px;
+        padding: 2px 5px;
+        &:hover {
+          background-color: rgb(255, 255, 255);
+          color: rgb(0, 0, 0);
+          border: 0.5px solid black;
+        }
+      }
+    }
+  }
+  .wrapRegisterJ {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    margin-left: -10px;
+    .registerSectionJ {
+      display: flex;
+      flex-flow: column;
+      justify-content: space-evenly;
+      height: 80vh;
+      width: 35vw;
+      border-left: 7px solid rgb(170, 170, 170);
+      border-radius: 50%;
+      margin: 30px -10px 30px 0;
+      color: rgb(255, 255, 255);
+
+      .toRegJ {
+        padding-left: 10%;
+      }
+    }
+  }
+}
+
+.fillJ {
+  height: 33px;
+  width: 300px;
+}
+
+.red {
+  color: red;
+}
+//Colors being used
+
+//Triple shape
+// rgb(0, 0, 0) black line
+// rgb(46, 46, 46) medium gray
+// rgb(170, 170, 170) light gray
+
+//background
+//rgb(241, 85, 24) orange
+
+//end of login&register

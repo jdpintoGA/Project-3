@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import NavBar from './NavBar'
-import auth from '../../backend/config/environment'
+import auth from '../lib/auth'
 
 class Login extends React.Component {
   constructor() {
@@ -25,7 +25,7 @@ class Login extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     axios
-      .post('http://localhost:8000/login', this.state.data)
+      .post('http://localhost:8000/api/login', this.state.data)
       .then(res => {
         const token = res.data.token
         auth.setToken(token)

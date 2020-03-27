@@ -24,18 +24,18 @@ const NavBar = () => {
         </svg>
       </label>
 
-      <nav className="nav">
-        <div className="nav-ul">
-          <Link className="link" to="/events">
+      <nav className="nav-m">
+        <div className="nav-ul-m">
+          <Link className="link-m" to="/events">
             EVENTS
           </Link>
-          <Link className="link" to="/create">
+          <Link className="link-m" to="/create">
             CREATE EVENT
           </Link>
-          <Link className="link" to="/register">
+          <Link className="link-m" to="/register">
             CREATE ACCOUNT
           </Link>
-          <Link className="link" to="/login">
+          <Link className="link-m" to="/login">
             LOG IN
           </Link>
         </div>

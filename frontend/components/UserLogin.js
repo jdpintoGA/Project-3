@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import NavBar from './NavBar'
-
 import auth from '../../backend/config/environment'
 
 class Login extends React.Component {
@@ -38,13 +37,14 @@ class Login extends React.Component {
   render() {
     const { error } = this.state
     return (
-      <div className="container">
+      <div className="container-m">
         <NavBar />
-        <div className="section loginPageJ">
+
+        <div className="section-m loginPageJ">
           <div className="loginSectionJ">
             <div className="fillJ"></div>
             <div className="contentJ">
-              <h1 className="loginTitleJ">Login</h1>
+              <h1 className="title-m">Login</h1>
               <form
                 className="form"
                 onSubmit={event => this.handleSubmit(event)}

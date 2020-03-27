@@ -11,7 +11,6 @@ import Home from '../components/Home'
 
 const App = () => (
   <BrowserRouter>
-    {/* <NavBar /> */}
     <Switch>
       <Route exact path="/" component={Home} />
     </Switch>

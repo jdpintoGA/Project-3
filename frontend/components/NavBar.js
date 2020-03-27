@@ -15,13 +15,13 @@ const NavBar = () => {
       </svg>
     </label>
 
-    <nav className="nav">
+    <nav className="nav-m">
       <h2>Menu</h2>
-      <div className="nav-ul">
-        <Link className="link" to="/events">EVENTS</Link>
-        <Link className="link" to="/create">CREATE EVENT</Link>
-        <Link className="link" to="/register">CREATE ACCOUNT</Link>
-        <Link className="link" to="/login">LOG IN</Link>
+      <div className="nav-ul-m">
+        <Link className="link-m" to="/events">EVENTS</Link>
+        <Link className="link-m" to="/create">CREATE EVENT</Link>
+        <Link className="link-m" to="/register">CREATE ACCOUNT</Link>
+        <Link className="link-m" to="/login">LOG IN</Link>
       </div>
     </nav>
   </React.Fragment>

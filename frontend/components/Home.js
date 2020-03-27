@@ -1,8 +1,11 @@
 import React from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+
 import image from '../images/background-image.jpg'
 import NavBar from '../components/NavBar'
-import { Link } from 'react-router-dom'
+import Footer from '../components/Footer'
+
 
 
 class Home extends React.Component {
@@ -59,8 +62,11 @@ class Home extends React.Component {
                   </div>
                 })}
           </div>
+          
         </div>
+        <Footer />
       </section>
+      
     </div>
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import bulma from 'bulma'
+// import bulma from 'bulma'
 import bulmaCalendar from 'bulma-calendar'
 
 const calendars = bulmaCalendar.attach('[type="date"]')

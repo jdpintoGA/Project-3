@@ -29,7 +29,7 @@ class Login extends React.Component {
       .then(res => {
         const token = res.data.token
         auth.setToken(token)
-        this.props.history.push('/home')
+        this.props.history.push('/')
       })
       .catch(err => this.setState({ error: err.response.data.message }))
   }
@@ -72,7 +72,9 @@ class Login extends React.Component {
                   </div>
                   {error && <small className="red">{error}</small>}
                 </div>
-                <button className="buttonJ">Login</button>
+                <Link to="/">
+                  <button className="buttonJ">Login</button>
+                </Link>
               </form>
             </div>
             <div className="fillJ"></div>

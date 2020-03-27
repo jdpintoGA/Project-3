@@ -26,7 +26,7 @@ class Login extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     axios
-      .post('http://localhost:8001/login', this.state.data)
+      .post('http://localhost:8000/login', this.state.data)
       .then(res => {
         const token = res.data.token
         auth.setToken(token)

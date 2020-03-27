@@ -1,39 +1,67 @@
 import React from 'react'
-import image from '../images/background.gif'
+import axios from 'axios'
+import image from '../images/background-image.jpg'
 import NavBar from '../components/NavBar'
+import { Link } from 'react-router-dom'
 
 
 class Home extends React.Component {
   constructor() {
     super()
     this.state = {
+      games: null
     }
+  }
+
+  fetchAllGames() {
+    axios.get('https://open.faceit.com/data/v4/games?offset=0&limit=20', { headers: { Authorization: 'Bearer 9a6523cf-c46d-434c-b623-3daeefa1acdb' } })
+      .then(res => {
+        this.setState({ games: res.data.items })
+      })
+      .catch(error => console.error(error))
+
+  }
+
+  componentDidMount() {
+    this.fetchAllGames()
   }
 
 
   render() {
-    return <div className="container">
+
+    if (!this.state.games) {
+      return null
+    }
+    console.log(this.state.games[0])
+    return <div className="container-m">
 
       <NavBar />
 
-      <section className="section" style={{ backgroundImage: `url(${image})` }}>
-
-        <div className="content">
-          <div className="description">
-            <div className="title">
-              <h1>Home Page</h1>
-            </div>
-            <div className="content-text">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, expedita. Aspernatur consectetur sapiente cupiditate debitis, consequatur eos quis quod maiores laboriosam ut nam aut ipsa quia veniam architecto modi temporibus.</p>
-            </div>
+      <section className="section-m" style={{ backgroundImage: `url(${image})` }}>
+        <div className="content-m">
+          <div className="cre-acc-m">
+            <Link className="link-HP-m" to="/register">Create Account</Link>
           </div>
-          <div className="container-event">
+
+          <div className="container-games-m">
+            {
+              this.state.games
+                .filter(game => game.assets.featured_img_m !== '')
+                .slice(8, 11).map(game => {
+
+                  if (game.assets.featured_img_m === '') {
+                    return null
+                  }
+
+                  return <div key={game.game_id} className="image-container-m">
+                    <img src={game.assets.featured_img_m} alt="Placeholder image" />
+
+                  </div>
+                })}
           </div>
         </div>
-        {/* </div> */}
       </section>
     </div>
-    // </div>
   }
 }
 

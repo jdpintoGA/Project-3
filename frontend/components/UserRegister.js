@@ -27,7 +27,7 @@ class Register extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     axios
-      .post('http://localhost:8001/register', this.state.data)
+      .post('http://localhost:8000/register', this.state.data)
       .then(() => this.props.history.push('/login'))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }

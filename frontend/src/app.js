@@ -1,21 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-require('../styles/style.scss')
+import Login from '../components/UserLogin'
+import Register from '../components/UserRegister'
 
 import '../styles/style.scss'
 
 import Home from '../components/Home'
-import CreateEvent from '../components/CreateEvent'
-// import EditEvent from '../components/EditEvent'
-// import NavBar from './components/NavBar'
-
-
+// import NavBar from '../components/NavBar'
 
 const App = () => (
   <BrowserRouter>
-  
     <Switch>
+      <Route path="/register" component={Register} />
+      <Route path="/login" component={Login} />
       <Route exact path="/" component={Home} />
       <Route exact path="/events" component={CreateEvent} />
       {/* <Route exact path="/" component={EditEvent} /> */}
@@ -23,7 +21,4 @@ const App = () => (
   </BrowserRouter>
 )
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-)
+ReactDOM.render(<App />, document.getElementById('root'))

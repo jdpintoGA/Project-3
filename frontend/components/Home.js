@@ -1,4 +1,7 @@
 import React from 'react'
+import axios from 'axios'
+import image from '../images/background-image.jpg'
+import NavBar from '../components/NavBar'
 import { Link } from 'react-router-dom'
 
 
@@ -6,40 +9,58 @@ class Home extends React.Component {
   constructor() {
     super()
     this.state = {
-
+      games: null
     }
   }
 
-  render() {
-    return <div className="container">
-      <div className="svg">
-        <svg viewBox="0 0 30 30" width="30">
-          <path id="one" d="M4 10h22M4" stroke="#000" strokeWidth="4" strokeLinecap="round"></path>
-          <path id="two" d="M4 20h22M4" stroke="#000" strokeWith="4" strokeLinecap="round"></path>
-        </svg>
-        <div className="nav">
-          <nav>
-            <h2>Menu</h2>
-            <div className="nav-ul">
-              <Link to="/events">EVENTS</Link>
-              <Link to="/create">CREATE EVENT</Link>
-              <Link to="/register">CREATE ACCOUNT</Link>
-              <Link to="/login">LOG IN</Link>
-            </div>
-          </nav>
-        </div>
-        <section className="section">
-          <div className="content">
-            <div className="title">
-              <h1>Home Page</h1>
-            </div>
-            <div className="content-page">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, expedita. Aspernatur consectetur sapiente cupiditate debitis, consequatur eos quis quod maiores laboriosam ut nam aut ipsa quia veniam architecto modi temporibus.</p>
-            </div>
-          </div>
-        </section>
+  fetchAllGames() {
+    axios.get('https://open.faceit.com/data/v4/games?offset=0&limit=20', { headers: { Authorization: 'Bearer 9a6523cf-c46d-434c-b623-3daeefa1acdb' } })
+      .then(res => {
+        this.setState({ games: res.data.items })
+      })
+      .catch(error => console.error(error))
 
-      </div>
+  }
+
+  componentDidMount() {
+    this.fetchAllGames()
+  }
+
+
+  render() {
+
+    if (!this.state.games) {
+      return null
+    }
+    console.log(this.state.games[0])
+    return <div className="container-m">
+
+      <NavBar />
+
+      <section className="section-m" style={{ backgroundImage: `url(${image})` }}>
+        <div className="content-m">
+          <div className="cre-acc-m">
+            <Link className="link-HP-m" to="/register">Create Account</Link>
+          </div>
+
+          <div className="container-games-m">
+            {
+              this.state.games
+                .filter(game => game.assets.featured_img_m !== '')
+                .slice(8, 11).map(game => {
+
+                  if (game.assets.featured_img_m === '') {
+                    return null
+                  }
+
+                  return <div key={game.game_id} className="image-container-m">
+                    <img src={game.assets.featured_img_m} alt="Placeholder image" />
+
+                  </div>
+                })}
+          </div>
+        </div>
+      </section>
     </div>
   }
 }

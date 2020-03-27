@@ -8,6 +8,7 @@ import '../styles/style.scss'
 
 import Home from '../components/Home'
 // import NavBar from '../components/NavBar'
+import CreateEvent from '../components/CreateEvent'
 
 const App = () => (
   <BrowserRouter>
@@ -15,7 +16,7 @@ const App = () => (
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
       <Route exact path="/" component={Home} />
-      <Route exact path="/events" component={CreateEvent} />
+      <Route exact path="/create" component={CreateEvent} />
       {/* <Route exact path="/" component={EditEvent} /> */}
     </Switch>
   </BrowserRouter>

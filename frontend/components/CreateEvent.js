@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import bulma from 'bulma'
+// import bulma from 'bulma'
 
 
 // import auth from '../lib/auth'

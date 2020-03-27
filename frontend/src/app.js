@@ -12,8 +12,6 @@ import Home from '../components/Home'
 import CreateEvent from '../components/CreateEvent'
 import Events from '../components/Events'
 
-
-
 const App = () => (
   <BrowserRouter>
     <Switch>

@@ -17,7 +17,7 @@ const App = () => (
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
       <Route exact path="/" component={Home} />
-      <Route exact path="/events" component={CreateEvent} />
+      {/* <Route exact path="/events" component={CreateEvent} /> */}
       {/* <Route exact path="/" component={EditEvent} /> */}
     </Switch>
   </BrowserRouter>

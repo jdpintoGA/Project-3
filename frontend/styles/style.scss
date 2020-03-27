@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.container {
+.container-m {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -53,7 +53,6 @@
   background: linear-gradient(
     217deg,
     rgba(241, 85, 24, 1),
-    // rgba(255, 255, 24, 0.9),
     rgba(0, 0, 0, 0) 89.71%
   );
 
@@ -65,11 +64,11 @@
   transform: translateX(-100%);
 }
 
-#check:checked + label ~ .nav {
+#check:checked + label ~ .nav-m {
   transform: translateX(0%);
 }
 
-.link {
+.link-m {
   text-decoration: none;
   color: rgb(255, 255, 255);
   padding: 10px;
@@ -141,14 +140,7 @@
   text-decoration: none;
 }
 
-.container-event {
-  margin-top: 150px;
-  background-color: pink;
-  height: 400px;
-  width: 600px;
-}
-
-#check:checked + label ~ .section {
+#check:checked + label ~ .section-m {
   z-index: -1;
   transform: rotateY(30deg) translateX(25vw);
 }
@@ -163,7 +155,6 @@
   width: 100vw;
   background-color: rgb(241, 85, 24);
   display: flex;
-
   justify-content: space-between;
   .loginSectionJ {
     z-index: 1;
@@ -251,9 +242,6 @@
   width: 300px;
 }
 
-.red {
-  color: red;
-}
 //Colors being used
 
 //Triple shape

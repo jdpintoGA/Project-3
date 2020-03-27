@@ -35,14 +35,14 @@ class Register extends React.Component {
   render() {
     const { errors } = this.state
     return (
-      <div className="container">
+      <div className="container-m">
         <NavBar />
 
-        <div className="section loginPageJ">
+        <div className="section-m loginPageJ">
           <div className="loginSectionJ">
             <div className="fillJ"></div>
             <div className="contentJ">
-              <h1 className="title">Register</h1>
+              <h1 className="title-m">Register</h1>
               <form
                 className="form"
                 onSubmit={event => this.handleSubmit(event)}

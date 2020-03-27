@@ -1,11 +1,9 @@
 import React from 'react'
 import axios from 'axios'
-import bulma from 'bulma'
-
+// import bulma from 'bulma'
 
 // import auth from '../lib/auth'
 import EventForm from './EventForm'
-
 
 class CreateEvent extends React.Component {
   constructor() {
@@ -24,7 +22,7 @@ class CreateEvent extends React.Component {
   }
 
   handleChange(event) {
-    const  { name, value } = event.target
+    const { name, value } = event.target
     const data = { ...this.state.data, [name]: value }
     this.setState({ data })
   }
@@ -38,16 +36,18 @@ class CreateEvent extends React.Component {
   }
   render() {
     const { errors } = this.state
-    return <section className="section">
-      <div className="container">
-        <h1 className="title">Creat Event</h1>
-        <EventForm
-          handleSubmit={(event) => this.handleSubmit(event)}
-          handleChange={(event) => this.handleChange(event)}
-          errors={errors}
-        />
-      </div>
-    </section>
+    return (
+      <section className="section">
+        <div className="container">
+          <h1 className="title">Creat Event</h1>
+          <EventForm
+            handleSubmit={event => this.handleSubmit(event)}
+            handleChange={event => this.handleChange(event)}
+            errors={errors}
+          />
+        </div>
+      </section>
+    )
   }
 }
 export default CreateEvent

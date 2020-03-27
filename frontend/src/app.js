@@ -1,14 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Login from '../components/UserLogin'
-import Register from '../components/UserRegister'
+
+// import 'bulma'
 
 import '../styles/style.scss'
 
+import Login from '../components/UserLogin'
+import Register from '../components/UserRegister'
 import Home from '../components/Home'
-// import NavBar from '../components/NavBar'
 import CreateEvent from '../components/CreateEvent'
+import Events from '../components/Events'
 
 const App = () => (
   <BrowserRouter>
@@ -17,7 +19,7 @@ const App = () => (
       <Route path="/login" component={Login} />
       <Route exact path="/" component={Home} />
       <Route exact path="/create" component={CreateEvent} />
-      {/* <Route exact path="/" component={EditEvent} /> */}
+      <Route exact path="/events" component={Events} />
     </Switch>
   </BrowserRouter>
 )

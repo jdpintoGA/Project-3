@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import auth from '../../backend/config/environment'
+import { Link } from 'react-router-dom'
+import NavBar from './NavBar'
+import auth from '../lib/auth'
 
 class Login extends React.Component {
   constructor() {
@@ -23,7 +25,7 @@ class Login extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     axios
-      .post('http://localhost:8001/login', this.state.data)
+      .post('http://localhost:8000/api/login', this.state.data)
       .then(res => {
         const token = res.data.token
         auth.setToken(token)
@@ -35,37 +37,62 @@ class Login extends React.Component {
   render() {
     const { error } = this.state
     return (
-      <section className="section">
-        <div className="container">
-          <h1 className="title">Login</h1>
-          <form className="form" onSubmit={event => this.handleSubmit(event)}>
-            <div className="field">
-              <label className="label">Email</label>
-              <div className="control">
-                <input
-                  onChange={event => this.handleChange(event)}
-                  type="text"
-                  name="email"
-                  className="input"
-                />
-              </div>
+      <div className="container-m">
+        <NavBar />
+
+        <div className="section-m loginPageJ">
+          <div className="loginSectionJ">
+            <div className="fillJ"></div>
+            <div className="contentJ">
+              <h1 className="title-m">Login</h1>
+              <form
+                className="form"
+                onSubmit={event => this.handleSubmit(event)}
+              >
+                <div className="fieldJ">
+                  <label className="label">Email</label>
+                  <div className="control">
+                    <input
+                      onChange={event => this.handleChange(event)}
+                      type="text"
+                      name="email"
+                      className="input"
+                    />
+                  </div>
+                </div>
+                <div className="fieldJ">
+                  <label className="label">Password</label>
+                  <div className="control">
+                    <input
+                      onChange={event => this.handleChange(event)}
+                      type="password"
+                      name="password"
+                      className="input"
+                    />
+                  </div>
+                  {error && <small className="red">{error}</small>}
+                </div>
+                <button className="buttonJ">Login</button>
+              </form>
             </div>
-            <div className="field">
-              <label className="label">Password</label>
-              <div className="control">
-                <input
-                  onChange={event => this.handleChange(event)}
-                  type="password"
-                  name="password"
-                  className="input"
-                />
+            <div className="fillJ"></div>
+          </div>
+          <div className="wrapRegisterJ">
+            <div className="fillJ"></div>
+            <div className="registerSectionJ">
+              <div className="fillJ"></div>
+              <div className="toRegJ">
+                <h3>
+                  Do not have an account? <Link to="/register"> Sign up </Link>
+                  instead!
+                </h3>
               </div>
-              {error && <small className="help is-danger">{error}</small>}
+              <div className="fillJ"></div>
             </div>
-            <button className="button is-success">Login</button>
-          </form>
+            <div className="fillJ"></div>
+          </div>
         </div>
-      </section>
+      </div>
     )
   }
 }

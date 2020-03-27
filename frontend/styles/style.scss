@@ -176,56 +176,59 @@
 // end Footer
 
 //login & register pages
-// justify-content: space-between;
-.loginSectionJ {
-  z-index: 1;
+.loginPageJ {
   display: flex;
-  flex-flow: column;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-grow: 1;
-  height: 100%;
-  color: rgb(0, 0, 0);
-  // background-color: rgb(255, 159, 121);
-  border-right: 13px solid rgb(46, 46, 46);
-
-  border-radius: 50%;
-
-  .contentJ {
+  justify-content: space-between;
+  background-color: rgb(255, 159, 121);
+  .loginSectionJ {
+    z-index: 1;
     display: flex;
     flex-flow: column;
-    align-items: flex-end;
-    text-align: right;
-    // background-color: rgb(255, 255, 255);
-    border-right: 20px solid rgb(0, 0, 0);
+    justify-content: space-evenly;
+    align-items: center;
+    flex-grow: 1;
+    height: 100%;
+    color: rgb(0, 0, 0);
+    border-right: 13px solid rgb(46, 46, 46);
+
     border-radius: 50%;
-    padding-top: 75px;
-    padding-bottom: 75px;
-    padding-right: 25%;
-    width: 100%;
-    margin-right: -25px;
-    min-height: 350px;
 
-    .fieldJ {
-      color: rgb(46, 46, 46);
-    }
-    input {
-      min-width: 150px;
-      min-height: 20px;
-      &:hover {
-        background-color: rgb(170, 170, 170);
+    .contentJ {
+      display: flex;
+      flex-flow: column;
+      align-items: flex-end;
+      text-align: right;
+      // background-color: rgb(255, 255, 255);
+      border-right: 20px solid rgb(0, 0, 0);
+      border-radius: 50%;
+      padding-top: 75px;
+      padding-bottom: 75px;
+      padding-right: 25%;
+      width: 100%;
+      margin-right: -25px;
+      min-height: 350px;
+
+      .fieldJ {
+        color: rgb(46, 46, 46);
       }
-    }
+      input {
+        min-width: 150px;
+        min-height: 20px;
+        &:hover {
+          background-color: rgb(170, 170, 170);
+        }
+      }
 
-    .buttonJ {
-      background-color: black;
-      color: rgb(255, 255, 255);
-      margin-top: 2px;
-      padding: 2px 5px;
-      &:hover {
-        background-color: rgb(255, 255, 255);
-        color: rgb(0, 0, 0);
-        border: 0.5px solid black;
+      .buttonJ {
+        background-color: black;
+        color: rgb(255, 255, 255);
+        margin-top: 2px;
+        padding: 2px 5px;
+        &:hover {
+          background-color: rgb(255, 255, 255);
+          color: rgb(0, 0, 0);
+          border: 0.5px solid black;
+        }
       }
     }
   }

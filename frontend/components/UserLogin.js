@@ -85,8 +85,7 @@ class Login extends React.Component {
               <div className="fillJ"></div>
               <div className="toRegJ">
                 <h3>
-                  Don`&apos`t have an account?
-                  <Link to="/register"> Sign up </Link>
+                  Do not have an account? <Link to="/register"> Sign up </Link>
                   instead!
                 </h3>
               </div>

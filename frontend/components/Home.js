@@ -62,7 +62,7 @@ class Home extends React.Component {
 
                   return (
                     <div key={game.game_id} className="image-container-m">
-                      <img
+                      <img className="games-image-m"
                         src={game.assets.featured_img_m}
                         alt="Placeholder image"
                       />
@@ -74,6 +74,7 @@ class Home extends React.Component {
 
           <Footer />
         </section>
+        
       </div>
     )
   }

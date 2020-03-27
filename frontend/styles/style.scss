@@ -53,7 +53,6 @@
   background: linear-gradient(
     217deg,
     rgba(241, 85, 24, 1),
-    // rgba(255, 255, 24, 0.9),
     rgba(0, 0, 0, 0) 89.71%
   );
 
@@ -110,13 +109,6 @@
   height: 90vh;
 }
 
-.title-m {
-  color: white;
-}
-
-.content-text-m {
-  color: white;
-}
 
 .container-games-m {
   display: flex;
@@ -126,6 +118,15 @@
 .image-container-m {
   padding: 20px;
   margin-top: 50px;
+}
+
+.games-image-m:hover {
+  transform:scale(1.4,1.4);
+  cursor: pointer;
+}
+
+.games-image-m {
+  transition: all .4s ease-in-out;
 }
 
 .cre-acc-m {
@@ -163,6 +164,12 @@
   );
 }
 
+.faceit-logo-m {
+  align-self: center;
+  height: 110px;
+  width: 190px;
+}
+
 .git-container-links-m {
   display: flex;
   justify-content: flex-end;
@@ -176,11 +183,7 @@
   font-size: 20px;
 }
 
-.faceit-logo-m {
-  background-color: black;
-  align-self: center;
-  z-index: 100;
-}
+
 // end Footer
 
 //login & register pages
@@ -268,9 +271,7 @@
   width: 300px;
 }
 
-.red {
-  color: red;
-}
+
 //Colors being used
 
 //Triple shape

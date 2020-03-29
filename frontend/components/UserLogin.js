@@ -25,7 +25,7 @@ class Login extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     axios
-      .post('http://localhost:8000/api/login', this.state.data)
+      .post('/api/login', this.state.data)
       .then(res => {
         const token = res.data.token
         auth.setToken(token)
@@ -35,7 +35,7 @@ class Login extends React.Component {
   }
 
   render() {
-    const { error } = this.state
+    const { error } = this.state //this.state.error as {error}
     return (
       <div className="container-m">
         <NavBar />
@@ -72,9 +72,8 @@ class Login extends React.Component {
                   </div>
                   {error && <small className="red">{error}</small>}
                 </div>
-                <Link to="/">
-                  <button className="buttonJ">Login</button>
-                </Link>
+
+                <button className="buttonJ">Login</button>
               </form>
             </div>
             <div className="fillJ"></div>

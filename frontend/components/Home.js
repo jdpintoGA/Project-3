@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import image from '../images/background-image.jpg'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import auth from '../lib/auth'
 
 class Home extends React.Component {
   constructor() {
@@ -32,6 +33,7 @@ class Home extends React.Component {
   }
 
   render() {
+    const isLoggedIn = auth.isLoggedIn()
     if (!this.state.games) {
       return null
     }
@@ -45,11 +47,20 @@ class Home extends React.Component {
           style={{ backgroundImage: `url(${image})` }}
         >
           <div className="content-m">
-            <div className="cre-acc-m">
-              <Link className="link-HP-m" to="/register">
-                Create Account
-              </Link>
-            </div>
+            {!isLoggedIn && (
+              <div className="cre-acc-m">
+                <Link className="link-HP-m" to="/register">
+                  Create Account
+                </Link>
+              </div>
+            )}
+            {isLoggedIn && (
+              <div className="cre-acc-m">
+                <Link className="link-HP-m" to="/create">
+                  Create Event
+                </Link>
+              </div>
+            )}
 
             <div className="container-games-m">
               {this.state.games
@@ -62,7 +73,8 @@ class Home extends React.Component {
 
                   return (
                     <div key={game.game_id} className="image-container-m">
-                      <img className="games-image-m"
+                      <img
+                        className="games-image-m"
                         src={game.assets.featured_img_m}
                         alt="Placeholder image"
                       />
@@ -74,7 +86,6 @@ class Home extends React.Component {
 
           <Footer />
         </section>
-        
       </div>
     )
   }

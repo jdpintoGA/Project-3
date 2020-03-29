@@ -27,13 +27,13 @@ class Register extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     axios
-      .post('http://localhost:8000/api/register', this.state.data)
+      .post('/api/register', this.state.data)
       .then(() => this.props.history.push('/login'))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
   render() {
-    const { errors } = this.state
+    const { errors } = this.state //this.state.error as {error}
     return (
       <div className="container-m">
         <NavBar />
@@ -100,9 +100,7 @@ class Register extends React.Component {
                     />
                   </div>
                   {errors.passwordConfirmation && (
-                    <small className="help is-danger">
-                      {errors.passwordConfirmation}
-                    </small>
+                    <small>{errors.passwordConfirmation}</small>
                   )}
                 </div>
                 <button className="buttonJ">Register</button>

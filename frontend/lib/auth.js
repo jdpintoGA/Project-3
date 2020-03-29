@@ -3,28 +3,23 @@ function setToken(token) {
 }
 
 function isLoggedIn() {
+  //so technically if someone store a token as a random string in their localStorage,
+  //they will be able to see the members only navbar
+  //BUT they won't be able to do any of the user only stuff cuz jwt verify happens in secureRoute
   return !!localStorage.getItem('token')
-}
-
-function getToken() {
-  return localStorage.getItem('token')
 }
 
 function logout() {
   localStorage.removeItem('token')
 }
 
-function getUserId() {
-  const token = getToken()
-  if (!token) return false
-  const parts = token.split('.')
-  return JSON.parse(atob(parts[1])).sub
+function getToken() {
+  return localStorage.getItem('token')
 }
 
 export default {
   setToken,
-  getToken,
   isLoggedIn,
-  getUserId,
-  logout
+  logout,
+  getToken
 }

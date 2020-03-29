@@ -32,7 +32,9 @@ function singleDelete(req, res) {
     .findById(id)
     .then(event => {
       if (!event.user.equals(currentUser._id))
-        return res.status(401).send({ message: 'Unauthorized' })
+        return res.status(401).send({
+          message: 'Unauthorized, this Event was created by someone else.'
+        })
       return event.remove()
     })
     .then(() => {
@@ -51,7 +53,11 @@ function edit(req, res) {
     })
     .then(event => {
       if (!event.user.equals(currentUser._id))
-        return res.status(401).send({ message: 'Unauthorized' })
+        return res
+          .status(401)
+          .send({
+            message: 'Unauthorized, this Event was created by someone else.'
+          })
       return event.save()
     })
     .then(event => {

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Event = require('./models/eventModel')
+const User = require('./models/user')
 const dbURI = 'mongodb://localhost/events-db'
 
 mongoose.connect(
@@ -12,6 +13,22 @@ mongoose.connect(
     console.log('Successfully connected to mongo!')
     db.dropDatabase()
       .then(() => {
+        return User.create([
+          {
+            username: 'HydrAKZR',
+            email: 'hydra@gmail.com',
+            password: 'joao1234',
+            passwordConfirmation: 'joao1234'
+          },
+          {
+            username: 'BabumbaBab',
+            email: 'BabumbaBab@BabumbaBab.com',
+            password: 'gabi1234',
+            passwordConfirmation: 'gabi1234'
+          }
+        ])
+      })
+      .then(users => {
         return Event.create([
           {
             eventName: 'Best eF1 tournament',
@@ -19,7 +36,7 @@ mongoose.connect(
             eventDescription: 'Race Simulator',
             platform: 'Steam',
             date: 19042020,
-            user: 'BabumbaBab'
+            user: users[0]
           },
           {
             eventName: 'Best FIFA 2020',
@@ -27,7 +44,7 @@ mongoose.connect(
             eventDescription: 'FIFA Simulator',
             platform: 'PC',
             date: 21052020,
-            user: 'BabumbaBab'
+            user: users[0]
           },
           {
             eventName: 'Best FIFA 2019',
@@ -35,7 +52,7 @@ mongoose.connect(
             eventDescription: 'FIFA Simulator',
             platform: 'xbox',
             date: 14042020,
-            user: 'HydrAKZR'
+            user: users[1]
           },
           {
             eventName: 'LoL 2 Death Tournament',
@@ -43,7 +60,7 @@ mongoose.connect(
             eventDescription: 'MOBA',
             platform: 'PC',
             date: 11042020,
-            user: 'HydrAKZR'
+            user: users[0]
           }
         ])
       })

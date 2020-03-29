@@ -17,7 +17,7 @@ function login(req, res) {
     .findOne({ email: req.body.email })
     .then(user => {
       if (!user.validatePassword(req.body.password)) {
-        return res.status(401).send({ message: 'Unauthorized' })
+        return res.status(401).send({ message: 'Password is incorrect' })
       }
       // at this point, we know the user is valid, we have their email,
       // and the password they're logging in with matches the password

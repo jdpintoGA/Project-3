@@ -1,10 +1,12 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+// import auth from '../lib/auth'
 
 import image from '../images/background-image.jpg'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import Nav from '../components/Nav'
 
 class Home extends React.Component {
   constructor() {
@@ -38,18 +40,16 @@ class Home extends React.Component {
     // console.log(this.state.games[0])
     return (
       <div className="container-m">
+        
         <NavBar />
 
         <section
           className="section-m"
           style={{ backgroundImage: `url(${image})` }}
         >
+          <Nav />
           <div className="content-m">
-            <div className="cre-acc-m">
-              <Link className="link-HP-m" to="/register">
-                Create Account
-              </Link>
-            </div>
+           
 
             <div className="container-games-m">
               {this.state.games && this.state.games //here is calling once the state and doesn't wait for the api to full fill the call
@@ -74,7 +74,7 @@ class Home extends React.Component {
 
           <Footer />
         </section>
-        
+
       </div>
     )
   }

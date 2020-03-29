@@ -25,15 +25,21 @@ class Register extends React.Component {
   }
 
   handleSubmit(event) {
+    console.log('submitting')
     event.preventDefault()
     axios
       .post('/api/register', this.state.data)
       .then(() => this.props.history.push('/login'))
-      .catch(err => this.setState({ errors: err.response.data.errors }))
+      .catch(err => {
+        console.log(err)
+        this.setState({ errors: err.response.data.errors })
+      }
+      )
   }
 
   render() {
     const { errors } = this.state
+    console.log(errors)
     return (
       <div className="container-m">
         <NavBar />
@@ -57,8 +63,8 @@ class Register extends React.Component {
                       className="input"
                     />
                   </div>
-                  {errors.email && (
-                    <small className="help is-danger">{errors.email}</small>
+                  {errors.email &&  (
+                    <small className="help is-danger" >{errors.email.message}</small>
                   )}
                 </div>
                 <div className="field">
@@ -72,7 +78,7 @@ class Register extends React.Component {
                     />
                   </div>
                   {errors.username && (
-                    <small className="help is-danger">{errors.username}</small>
+                    <small className="help is-danger">{errors.username.message}</small>
                   )}
                 </div>
                 <div className="field">
@@ -86,7 +92,7 @@ class Register extends React.Component {
                     />
                   </div>
                   {errors.password && (
-                    <small className="help is-danger">{errors.password}</small>
+                    <small className="help is-danger">{errors.password.message}</small>
                   )}
                 </div>
                 <div className="field">
@@ -101,11 +107,11 @@ class Register extends React.Component {
                   </div>
                   {errors.passwordConfirmation && (
                     <small className="help is-danger">
-                      {errors.passwordConfirmation}
+                      {errors.passwordConfirmation.message}
                     </small>
                   )}
                 </div>
-                <button className="buttonJ">Register</button>
+                <button className="buttonJ" type="submit">Register</button>
               </form>
             </div>
             <div className="fillJ"></div>

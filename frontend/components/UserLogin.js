@@ -23,19 +23,26 @@ class Login extends React.Component {
   }
 
   handleSubmit(event) {
+
     event.preventDefault()
     axios
       .post('/api/login', this.state.data)
       .then(res => {
+      
         const token = res.data.token
         auth.setToken(token)
         this.props.history.push('/')
       })
-      .catch(err => this.setState({ error: err.response.data.message }))
+      .catch(err => {
+
+        this.setState({ error: err.response.data.message })
+       
+      })
   }
 
   render() {
     const { error } = this.state
+
     return (
       <div className="container-m">
         <NavBar />
@@ -70,9 +77,11 @@ class Login extends React.Component {
                       className="input"
                     />
                   </div>
-                  {error && <small className="red">{error}</small>}
+                  {error && (<small className="red">{error}</small>)}
                 </div>
-                <button className="buttonJ">Login</button>
+                {/* <Link to="/"> */}
+                <button className="buttonJ" type="submit" >Login</button>
+                {/* </Link> */}
               </form>
             </div>
             <div className="fillJ"></div>

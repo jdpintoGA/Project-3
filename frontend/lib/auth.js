@@ -3,7 +3,9 @@ function setToken(token) {
 }
 
 function isLoggedIn() {
-  return !!localStorage.getItem('token')
+  const isLoggedIn = !!localStorage.getItem('token')
+  console.log('logged' + isLoggedIn)
+  return isLoggedIn
 }
 
 function getToken() {

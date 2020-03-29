@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 // import bulma from 'bulma'
 
-// import auth from '../lib/auth'
+import auth from '../lib/auth'
 import EventForm from './EventForm'
 
 class CreateEvent extends React.Component {
@@ -26,6 +26,7 @@ class CreateEvent extends React.Component {
     const data = { ...this.state.data, [name]: value }
     this.setState({ data })
   }
+
   handleSubmit(event) {
     event.preventDefault()
     axios.post('https://localhost:8000/api/events',
@@ -34,6 +35,7 @@ class CreateEvent extends React.Component {
       .then(res => this.props.history.push(`/event/${res.data._id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
+
   render() {
     const { errors } = this.state
     return (
@@ -50,4 +52,5 @@ class CreateEvent extends React.Component {
     )
   }
 }
+
 export default CreateEvent

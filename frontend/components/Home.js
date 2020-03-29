@@ -1,11 +1,12 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+// import auth from '../lib/auth'
 
 import image from '../images/background-image.jpg'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
-import auth from '../lib/auth'
+import Nav from '../components/Nav'
 
 class Home extends React.Component {
   constructor() {
@@ -33,11 +34,10 @@ class Home extends React.Component {
   }
 
   render() {
-    const isLoggedIn = auth.isLoggedIn()
-    if (!this.state.games) {
-      return null
-    }
-    console.log(this.state.games[0])
+    // if (!this.state.games) {
+    //   return null
+    // }
+    // console.log(this.state.games[0])
     return (
       <div className="container-m">
         <NavBar />
@@ -46,41 +46,28 @@ class Home extends React.Component {
           className="section-m"
           style={{ backgroundImage: `url(${image})` }}
         >
+          <Nav />
           <div className="content-m">
-            {!isLoggedIn && (
-              <div className="cre-acc-m">
-                <Link className="link-HP-m" to="/register">
-                  Create Account
-                </Link>
-              </div>
-            )}
-            {isLoggedIn && (
-              <div className="cre-acc-m">
-                <Link className="link-HP-m" to="/create">
-                  Create Event
-                </Link>
-              </div>
-            )}
-
             <div className="container-games-m">
-              {this.state.games
-                .filter(game => game.assets.featured_img_m !== '')
-                .slice(8, 11)
-                .map(game => {
-                  if (game.assets.featured_img_m === '') {
-                    return null
-                  }
+              {this.state.games &&
+                this.state.games //here is calling once the state and doesn't wait for the api to full fill the call
+                  .filter(game => game.assets.featured_img_m !== '')
+                  .slice(8, 11)
+                  .map(game => {
+                    if (game.assets.featured_img_m === '') {
+                      return null
+                    }
 
-                  return (
-                    <div key={game.game_id} className="image-container-m">
-                      <img
-                        className="games-image-m"
-                        src={game.assets.featured_img_m}
-                        alt="Placeholder image"
-                      />
-                    </div>
-                  )
-                })}
+                    return (
+                      <div key={game.game_id} className="image-container-m">
+                        <img
+                          className="games-image-m"
+                          src={game.assets.featured_img_m}
+                          alt="Placeholder image"
+                        />
+                      </div>
+                    )
+                  })}
             </div>
           </div>
 

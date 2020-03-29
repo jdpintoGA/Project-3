@@ -31,11 +31,14 @@ class Login extends React.Component {
         auth.setToken(token)
         this.props.history.push('/')
       })
-      .catch(err => this.setState({ error: err.response.data.message }))
+      .catch(err => {
+        this.setState({ error: err.response.data.message })
+      })
   }
 
   render() {
-    const { error } = this.state //this.state.error as {error}
+    const { error } = this.state
+
     return (
       <div className="container-m">
         <NavBar />
@@ -72,8 +75,11 @@ class Login extends React.Component {
                   </div>
                   {error && <small className="red">{error}</small>}
                 </div>
-
-                <button className="buttonJ">Login</button>
+                {/* <Link to="/"> */}
+                <button className="buttonJ" type="submit">
+                  Login
+                </button>
+                {/* </Link> */}
               </form>
             </div>
             <div className="fillJ"></div>

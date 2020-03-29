@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import NavBar from './NavBar'
 // import bulma from 'bulma'
 
 import auth from '../lib/auth'
@@ -26,29 +27,38 @@ class CreateEvent extends React.Component {
     const data = { ...this.state.data, [name]: value }
     this.setState({ data })
   }
+
   handleSubmit(event) {
     event.preventDefault()
     axios
-      .post('/api/events', this.state.data, {
-        headers: { Authorization: `Bearer ${auth.getToken()}` }
-      })
+      .post('/api/events', this.state.data)
+      // { headers: { Authorization: `Bearer ${auth.getToken()}` } })
       .then(res => this.props.history.push(`/event/${res.data._id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
+
   render() {
     const { errors } = this.state
     return (
-      <section className="section">
-        <div className="container">
-          <h1 className="title">Creat Event</h1>
-          <EventForm
-            handleSubmit={event => this.handleSubmit(event)}
-            handleChange={event => this.handleChange(event)}
-            errors={errors}
-          />
+      <div className="container-m">
+        <NavBar />
+
+        <div className="section-m loginPageJ">
+          <div className="loginSectionJ">
+            <div className="fillJ"></div>
+            <div className="contentJ">
+              <h1 className="title-m">Create Event</h1>
+              <EventForm
+                handleSubmit={event => this.handleSubmit(event)}
+                handleChange={event => this.handleChange(event)}
+                errors={errors}
+              />
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
     )
   }
 }
+
 export default CreateEvent

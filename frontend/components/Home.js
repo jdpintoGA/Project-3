@@ -32,10 +32,10 @@ class Home extends React.Component {
   }
 
   render() {
-    if (!this.state.games) {
-      return null
-    }
-    console.log(this.state.games[0])
+    // if (!this.state.games) {
+    //   return null
+    // }
+    // console.log(this.state.games[0])
     return (
       <div className="container-m">
         <NavBar />
@@ -52,7 +52,7 @@ class Home extends React.Component {
             </div>
 
             <div className="container-games-m">
-              {this.state.games
+              {this.state.games && this.state.games //here is calling once the state and doesn't wait for the api to full fill the call
                 .filter(game => game.assets.featured_img_m !== '')
                 .slice(8, 11)
                 .map(game => {

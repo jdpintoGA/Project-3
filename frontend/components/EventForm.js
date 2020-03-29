@@ -36,7 +36,7 @@ const EventForm = ({ handleSubmit, handleChange, errors }) => {
           onChange={(event) => handleChange(event)}
           type="text"
           name="eventName"
-          className="input"
+          className="input-g"
         />
       </div>
 
@@ -54,7 +54,7 @@ const EventForm = ({ handleSubmit, handleChange, errors }) => {
           onChange={(event) => handleChange(event)}
           type="text"
           name="eventType"
-          className="input"
+          className="input-g"
         />
       </div>
       {errors.eventType && <small className="help is-danger">
@@ -71,7 +71,7 @@ const EventForm = ({ handleSubmit, handleChange, errors }) => {
           onChange={(event) => handleChange(event)}
           type="text"
           name="eventDescription"
-          className="input"
+          className="input-g"
         />
       </div>
       {errors.eventDescription && <small className="help is-danger">
@@ -88,7 +88,7 @@ const EventForm = ({ handleSubmit, handleChange, errors }) => {
           onChange={(event) => handleChange(event)}
           type="text"
           name="platform"
-          className="input"
+          className="input-g"
         />
       </div>
       {errors.platform && <small className="help is-danger">
@@ -105,7 +105,7 @@ const EventForm = ({ handleSubmit, handleChange, errors }) => {
           onChange={(event) => handleChange(event)}
           type="text"
           name="location"
-          className="input"
+          className="input-g"
         />
       </div>
       {errors.location && <small className="help is-danger">
@@ -123,12 +123,12 @@ const EventForm = ({ handleSubmit, handleChange, errors }) => {
           type="date"
           name="date"
           className="input"
-          data-display-mode="inline" data-is-range="true" data-close-on-select="false" closeonselect="true" position="auto">
+          data-display-mode="inline" data-is-range="true" data-close-on-select="false" closeonselect="true" position="right">
         </input>
       </div>
     </div>
 
-    <button className="button is-success">
+    <button className="button-G" width="60">
       Create Event
     </button>
   </form>

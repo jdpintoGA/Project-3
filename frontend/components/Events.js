@@ -13,12 +13,18 @@ class Events extends React.Component {
   constructor() {
     super()
     this.state = {
-      games: null
+      games: null,
+      events: null,
+      currentSelection: 'Games'
+
 
     }
+
+
   }
 
   fetchAllGames() {
+    console.log('Fetching')
     axios
       .get('https://open.faceit.com/data/v4/games?offset=0&limit=20', {
         headers: {
@@ -26,20 +32,78 @@ class Events extends React.Component {
         }
       })
       .then(res => {
+        console.log(res)
         this.setState({ games: res.data.items })
       })
       .catch(error => console.error(error))
+
+
   }
 
   componentDidMount() {
+    console.log('componentDidMount')
     this.fetchAllGames()
+  }
+
+  handleGames() {
+
+    const allGames = this.fetchAllGames()
+    this.setState({ games: allGames, currentSelection: 'Games' })
+  }
+
+  handleEvents() {
+    const allEvents = this.renderEvents()
+    this.setState({ games: allEvents, currentSelection: 'Events' })
+  }
+
+  
+  renderEvents() {
+  
+    return <h1>Test</h1>
+  }
+
+  renderGames() {
+    if (!this.state.games) {
+      console.log('rendering -> null')
+      return null
+    }
+    return <div className="right-content-m">
+      {this.state.games.map(game => {
+        if (game.assets.featured_img_m === '') {
+          return null
+        } else if (game.platforms === []) {
+          return null
+        }
+        return <div
+          key={game.game_id}
+          className="container-image-m">
+          <img src={game.assets.featured_img_m} alt="" />
+          <div className="container-platform-m">
+            <h3>Platform: {game.platforms}</h3>
+
+            <h5>Region: {game.regions}</h5>
+
+          </div>
+        </div>
+      })}
+
+    </div>
   }
 
 
   render() {
-    if (!this.state.games) {
-      return null
+    console.log('rendering')
+    
+
+    let component
+
+    if (this.state.currentSelection === 'Games') {
+      component = this.renderGames()
+    } else if (this.state.currentSelection === 'Events') {
+      component = this.renderEvents()
     }
+
+
     // const { image } = this.state.games.featured_img_m
     return <div className="event-wrap-m">
       <NavBar />
@@ -60,26 +124,29 @@ class Events extends React.Component {
             </div>
           </div>
           <div className="left-container-m">
-            <Link className="container-events-m" to="/" >
+            <div className="container-events-m"
+              onClick={() => this.handleGames()}>
+
               <div className="container-event-image-m" style={{ backgroundImage: `url(${games})` }}>
                 <div className="events-links-m" >Games</div>
               </div>
-            </Link>
-            <Link className="container-events-m" to="/" >
+            </div>
+            <div className="container-events-m"
+              onClick={() => this.handleEvents()}>
               <div className="container-event-image-m" style={{ backgroundImage: `url(${games})` }}>
                 <div className="events-links-m" >Events</div>
               </div>
-            </Link>
-            <Link className="container-events-m" to="/" >
+            </div>
+            <div className="container-events-m" >
               <div className="container-event-image-m" style={{ backgroundImage: `url(${games})` }}>
                 <div className="events-links-m" >Tournaments</div>
               </div>
-            </Link>
-            <Link className="container-events-m" to="/" >
+            </div>
+            <div className="container-events-m" >
               <div className="container-event-image-m" style={{ backgroundImage: `url(${games})` }}>
                 <div className="events-links-m" >Championships</div>
               </div>
-            </Link>
+            </div>
 
           </div>
         </div>
@@ -90,9 +157,17 @@ class Events extends React.Component {
             <Nav />
           </div>
           <div className="right-container-m">
-            <div className="right-content-m">
+
+
+
+            {component}
+
+
+            {/* <div className="right-content-m">
               {this.state.games.map(game => {
                 if (game.assets.featured_img_m === '') {
+                  return null
+                } else if (game.platforms === []) {
                   return null
                 }
                 return <div
@@ -100,17 +175,15 @@ class Events extends React.Component {
                   className="container-image-m">
                   <img src={game.assets.featured_img_m} alt="" />
                   <div className="container-platform-m">
+                    <h3>Platform: {game.platforms}</h3>
 
-
-                    <div className="container-region-m">
-
-                    </div>
+                    <h5>Region: {game.regions}</h5>
 
                   </div>
                 </div>
               })}
 
-            </div>
+            </div> */}
           </div>
 
         </div>
@@ -118,6 +191,12 @@ class Events extends React.Component {
 
     </div>
   }
+
+
+
 }
+
+
+
 
 export default Events

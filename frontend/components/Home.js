@@ -56,7 +56,7 @@ class Home extends React.Component {
                   .map(game => {
                     if (game.assets.featured_img_m === '') {
                       return null
-                    }
+                    } 
 
                     return (
                       <div key={game.game_id} className="image-container-m">

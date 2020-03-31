@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import Moment from 'react-moment'
 
 import addButton from '../images/add-icon.png'
 import games from '../images/games-icon.png'
@@ -36,7 +37,7 @@ class Events extends React.Component {
   }
 
   fetchAllGames() {
-    console.log('Fetching')
+    // console.log('Fetching')
     axios
       .get('https://open.faceit.com/data/v4/games?offset=0&limit=20', {
         headers: {
@@ -44,62 +45,115 @@ class Events extends React.Component {
         }
       })
       .then(res => {
-        console.log(res)
-        this.setState({ games: res.data.items })
+        this.setState({ games: res.data.items, currentSelection: 'Games' })
       })
       .catch(error => console.error(error))
 
+  }
 
+  fetchLeagues() {
+    console.log('Fetching leagues')
+    axios
+      .get('https://api.pandascore.co/series?token=1wCqgz0G63stMjHHwN0Bn2itQVq1z2Pc7szHZNR4MHpGWqkDy5o')
+      .then(res => {
+        console.log(res.data)
+        this.setState({ leagues: res.data, currentSelection: 'Leagues' })
+      })
+      .catch(error => console.error(error))
   }
 
   componentDidMount() {
-    console.log('componentDidMount')
-    this.fetchAllGames()
+
+    // console.log("componentDidMount")
+    // this.fetchAllGames()
+
   }
 
   handleGames() {
+    console.log('Fetching games')
+    this.fetchAllGames()
 
-    const allGames = this.fetchAllGames()
-    this.setState({ games: allGames, currentSelection: 'Games' })
   }
 
-  handleEvents() {
-    const allEvents = this.renderEvents()
-    this.setState({ games: allEvents, currentSelection: 'Events' })
-  }
+  handleLeagues() {
+    this.fetchLeagues()
 
+<<<<<<< HEAD
 
   renderEvents() {
 
     return <h1>Test</h1>
+=======
+>>>>>>> dev
   }
 
-  renderGames() {
-    if (!this.state.games) {
-      console.log('rendering -> null')
+
+  renderLeagues() {
+    var moment = require('moment')
+    console.log('valid ' + moment("2020-04-09T22:00:00Z").isValid())
+
+    if (!this.state.leagues) {
       return null
     }
-    return <div className="right-content-m">
-      {this.state.games.map(game => {
-        if (game.assets.featured_img_m === '') {
-          return null
-        } else if (game.platforms === []) {
+    return <>
+      <div className="leagues-topbar-m">
+        <div id="leagues-name-m">
+          <h2>Leagues</h2>
+        </div>
+        <div className="leagues-name-m">
+          <h2>Tournaments Name</h2>
+        </div>
+        <div className="leagues-name-m">
+          <h2>Tournaments Date</h2>
+        </div>
+      </div>
+      {this.state.leagues.map(league => {
+        if (league.name === '' || league.name === null) {
           return null
         }
-        return <div
-          key={game.game_id}
-          className="container-image-m">
-          <img src={game.assets.featured_img_m} alt="" />
-          <div className="container-platform-m">
-            <h3>Platform: {game.platforms}</h3>
+        return <section
+          key={league._id}
+          className="leagues-section-m">
 
-            <h5>Region: {game.regions}</h5>
-
+          <div className="div-league-m">
+            <h3>{league.name}</h3>
           </div>
-        </div>
+          <div className="div-tournaments-m">
+            {league.tournaments.map(tournament => {
+
+              return <>
+                <div className="div-tts-name-m">
+                  <h3 key={tournament._id}>Tournament: {tournament.name}</h3>
+
+                </div>
+
+              </>
+            })}
+          </div>
+          <div className="div-tournaments-dates-m">
+            {league.tournaments.map(tournament => {
+
+              return <>
+                <div className="div-date-m">
+                  <h3>Start: <Moment format="YYYY/MM/DD">
+                    {tournament.start_at}
+
+                  </Moment>
+                  </h3>
+                  <h3>End: <Moment format="YYYY/MM/DD">
+                    {tournament.end_at}
+                  </Moment>
+                  </h3>
+
+                </div>
+              </>
+            })}
+          </div>
+
+        </section>
       })}
 
-    </div>
+    </>
   }
   toggleModal() {
     const newModal = !this.state.modalActive
@@ -107,16 +161,22 @@ class Events extends React.Component {
   }
 
 
+
+
   render() {
+<<<<<<< HEAD
     console.log('rendering')
+=======
+    // console.log('rendering')
+>>>>>>> dev
 
 
     let component
 
     if (this.state.currentSelection === 'Games') {
       component = this.renderGames()
-    } else if (this.state.currentSelection === 'Events') {
-      component = this.renderEvents()
+    } else if (this.state.currentSelection === 'Leagues') {
+      component = this.renderLeagues()
     }
 
 
@@ -153,14 +213,16 @@ class Events extends React.Component {
                 <div className="events-links-m" >Events</div>
               </div>
             </div>
-            <div className="container-events-m" >
+            <div className="container-events-m"
+              onClick={() => this.handleLeagues()}>
               <div className="container-event-image-m" style={{ backgroundImage: `url(${games})` }}>
-                <div className="events-links-m" >Tournaments</div>
+                <div className="events-links-m" >Leagues</div>
               </div>
             </div>
-            <div className="container-events-m" >
+            <div className="container-events-m"
+              onClick={() => this.handleLiveGames()}>
               <div className="container-event-image-m" style={{ backgroundImage: `url(${games})` }}>
-                <div className="events-links-m" >Championships</div>
+                <div className="events-links-m" >Now Live</div>
               </div>
             </div>
 
@@ -174,32 +236,8 @@ class Events extends React.Component {
           </div>
           <div className="right-container-m">
 
-
-
             {component}
 
-
-            {/* <div className="right-content-m">
-              {this.state.games.map(game => {
-                if (game.assets.featured_img_m === '') {
-                  return null
-                } else if (game.platforms === []) {
-                  return null
-                }
-                return <div
-                  key={game.game_id}
-                  className="container-image-m">
-                  <img src={game.assets.featured_img_m} alt="" />
-                  <div className="container-platform-m">
-                    <h3>Platform: {game.platforms}</h3>
-
-                    <h5>Region: {game.regions}</h5>
-
-                  </div>
-                </div>
-              })}
-
-            </div> */}
           </div>
 
         </div>
@@ -214,7 +252,33 @@ class Events extends React.Component {
     </div>
   }
 
+  renderGames() {
+    if (!this.state.games) {
+      // console.log('rendering -> null')
+      return null
+    }
+    return <div className="right-content-m">
+      {this.state.games.map(game => {
+        if (game.assets.featured_img_m === '') {
+          return null
+        } else if (game.platforms === []) {
+          return null
+        }
+        return <div
+          key={game.game_id}
+          className="container-image-m">
+          <img src={game.assets.featured_img_m} alt="" />
+          <div className="container-platform-m">
+            <h3>Platform: {game.platforms}</h3>
 
+            <h5>Region: {game.regions}</h5>
+
+          </div>
+        </div>
+      })}
+
+    </div>
+  }
 
 }
 

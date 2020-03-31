@@ -78,13 +78,6 @@ class Events extends React.Component {
   handleLeagues() {
     this.fetchLeagues()
 
-<<<<<<< HEAD
-
-  renderEvents() {
-
-    return <h1>Test</h1>
-=======
->>>>>>> dev
   }
 
 
@@ -164,11 +157,7 @@ class Events extends React.Component {
 
 
   render() {
-<<<<<<< HEAD
-    console.log('rendering')
-=======
     // console.log('rendering')
->>>>>>> dev
 
 
     let component

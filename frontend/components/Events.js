@@ -101,9 +101,7 @@ class Events extends React.Component {
           </div>
           <div className="div-tournaments-m">
             {league.tournaments.map(tournament => {
-              // if (tournament.name === '' || tournament.name === null) {
-              //   return null
-              // }
+
               return <>
                 <div className="div-tts-name-m">
                   <h3 key={tournament._id}>Tournament: {tournament.name}</h3>
@@ -115,9 +113,7 @@ class Events extends React.Component {
           </div>
           <div className="div-tournaments-dates-m">
             {league.tournaments.map(tournament => {
-              // if (tournament.name === '' || tournament.name === null) {
-              //   return null
-              // }
+
               return <>
                 <div className="div-date-m">
                   <h3>Start: <Moment format="YYYY/MM/DD">
@@ -185,19 +181,21 @@ class Events extends React.Component {
               </div>
             </div>
             <div className="container-events-m"
-              onClick={() => this.handleLeagues()}>
+              onClick={() => this.handleEvents()}>
               <div className="container-event-image-m" style={{ backgroundImage: `url(${games})` }}>
                 <div className="events-links-m" >Events</div>
               </div>
             </div>
-            <div className="container-events-m" >
+            <div className="container-events-m"
+              onClick={() => this.handleLeagues()}>
               <div className="container-event-image-m" style={{ backgroundImage: `url(${games})` }}>
-                <div className="events-links-m" >Tournaments</div>
+                <div className="events-links-m" >Leagues</div>
               </div>
             </div>
-            <div className="container-events-m" >
+            <div className="container-events-m"
+              onClick={() => this.handleLiveGames()}>
               <div className="container-event-image-m" style={{ backgroundImage: `url(${games})` }}>
-                <div className="events-links-m" >Championships</div>
+                <div className="events-links-m" >Now Live</div>
               </div>
             </div>
 

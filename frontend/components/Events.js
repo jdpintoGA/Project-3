@@ -6,6 +6,7 @@ import addButton from '../images/add-icon.png'
 import games from '../images/games-icon.png'
 import NavBar from '../components/NavBar'
 import Nav from '../components/Nav'
+import GameModal from '../components/GameModal'
 
 
 
@@ -15,12 +16,23 @@ class Events extends React.Component {
     this.state = {
       games: null,
       events: null,
-      currentSelection: 'Games'
-
-
+      currentSelection: 'Games',
+      modalActive: false
     }
+  }
 
-
+  // eslint-disable-next-line camelcase
+  handleClick(featured_img_m) {
+    // eslint-disable-next-line camelcase
+    axios.get(`https://open.faceit.com/data/v4/games?offset=0&limit=20/${featured_img_m}`, {
+      headers: {
+        Authorization: 'Bearer 9a6523cf-c46d-434c-b623-3daeefa1acdb'
+      }
+    })
+      .then(response => {
+        this.setState({ singleGame: response.data })
+        this.toggleModal()
+      })
   }
 
   fetchAllGames() {
@@ -56,9 +68,9 @@ class Events extends React.Component {
     this.setState({ games: allEvents, currentSelection: 'Events' })
   }
 
-  
+
   renderEvents() {
-  
+
     return <h1>Test</h1>
   }
 
@@ -89,11 +101,15 @@ class Events extends React.Component {
 
     </div>
   }
+  toggleModal() {
+    const newModal = !this.state.modalActive
+    this.setState({ modalActive: newModal })
+  }
 
 
   render() {
     console.log('rendering')
-    
+
 
     let component
 
@@ -188,6 +204,12 @@ class Events extends React.Component {
 
         </div>
       </section>
+      {this.state.modalActive ? <GameModal
+        long_label={this.state.singleGame.long_label}
+        platforms={this.state.singleGame.platforms}
+        regions={this.state.singleGame.regions}
+        featured_img_l={this.state.singleGame.featured_img_l}
+        toggleModal={() => this.toggleModal()} /> : null}
 
     </div>
   }

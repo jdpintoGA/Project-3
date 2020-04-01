@@ -3,7 +3,7 @@ import axios from 'axios'
 import NavBar from './NavBar'
 // import bulma from 'bulma'
 
-// import auth from '../lib/auth'
+import auth from '../lib/auth'
 import EventForm from './EventForm'
 
 class CreateEvent extends React.Component {
@@ -15,8 +15,8 @@ class CreateEvent extends React.Component {
         eventType: '',
         eventDescription: '',
         location: '',
-        date: 0,
-        userName: ''
+        platform: '',
+        date: ''
       },
       errors: {}
     }
@@ -26,14 +26,16 @@ class CreateEvent extends React.Component {
     const { name, value } = event.target
     const data = { ...this.state.data, [name]: value }
     this.setState({ data })
+    console.log(this.state.data)
   }
 
   handleSubmit(event) {
     event.preventDefault()
     axios
-      .post('/api/events', this.state.data)
-      // { headers: { Authorization: `Bearer ${auth.getToken()}` } })
-      .then(res => this.props.history.push(`/event/${res.data._id}`))
+      .post('/api/events', this.state.data, {
+        headers: { Authorization: `Bearer ${auth.getToken()}` }
+      })
+      .then(res => this.props.history.push(`/hub`))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
@@ -47,7 +49,7 @@ class CreateEvent extends React.Component {
           <div className="loginSectionJ">
             <div className="fillJ"></div>
             <div className="contentJ">
-              <h1 className="title-m">Create Event</h1>
+              <h1 className="title-g">Create Event</h1>
               <EventForm
                 handleSubmit={event => this.handleSubmit(event)}
                 handleChange={event => this.handleChange(event)}

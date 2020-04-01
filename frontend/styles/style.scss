@@ -50,11 +50,7 @@
 .nav-m {
   position: absolute;
   width: 24vw;
-  background: linear-gradient(
-    217deg,
-    rgb(241, 85, 24),
-    rgb(0, 0, 0) 89.71%
-  );
+  background: linear-gradient(217deg, rgb(241, 85, 24), rgb(0, 0, 0) 89.71%);
 
   height: 100vh;
   padding: 80px 20px;
@@ -109,7 +105,6 @@
   height: 90vh;
 }
 
-
 .container-games-m {
   display: flex;
   flex-direction: wrap;
@@ -121,15 +116,13 @@
 }
 
 .games-image-m:hover {
-  transform:scale(1.4,1.4);
+  transform: scale(1.4, 1.4);
   cursor: pointer;
 }
 
 .games-image-m {
-  transition: all .4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
-
-
 
 .container-creacc-login-m {
   display: flex;
@@ -173,7 +166,6 @@
   color: white;
   font-size: 20px;
 }
-
 
 ///////////////////////////////////////////////////// end Footer
 
@@ -221,11 +213,16 @@
       }
 
       .input-g {
-        width: 300px;
+        width: 600px;
         min-height: 20px;
         &:hover {
           background-color: rgb(170, 170, 170);
         }
+      }
+
+      .title-g {
+        color: rgb(46, 46, 46);
+        font-size: 23px;
       }
 
       .buttonJ {
@@ -240,7 +237,7 @@
         }
       }
       .button-G {
-        min-width: 150px;
+        min-width: 200px;
         background-color: black;
         color: rgb(255, 255, 255);
         margin-top: 2px;
@@ -283,8 +280,6 @@
 
 //Event Form
 
-
-
 //Colors being used
 
 //Triple shape
@@ -306,9 +301,7 @@
   perspective: 1000px;
   transform-style: preserve-3d;
   background-color: black;
-  
 }
-
 
 .event-section-m {
   z-index: -1;
@@ -321,7 +314,6 @@
   background-repeat: no-repeat;
   transition: 0.5s;
 }
-
 
 .left-wrapper-m {
   width: 25%;
@@ -342,7 +334,11 @@
   margin-top: 70px;
   width: 25%;
   height: 2px;
-  background-image: linear-gradient(to left, rgba(88, 87, 87, 0), rgba(88, 87, 87,1));
+  background-image: linear-gradient(
+    to left,
+    rgba(88, 87, 87, 0),
+    rgba(88, 87, 87, 1)
+  );
 }
 
 .btn-add-m {
@@ -350,8 +346,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   border: 2px solid grey;
   background-color: rgb(241, 85, 24);
   margin-top: 80px;
@@ -362,12 +358,11 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-
-} 
+}
 
 .add-image-m {
-  width: 30px;
-  height: 30px;
+  width: 100%;
+  height: 100%;
 }
 
 .container-links-m {
@@ -376,7 +371,7 @@
   background-color: rgb(241, 85, 24);
   margin-left: 120px;
   margin-top: 62px;
-  border: 2px solid grey
+  border: 2px solid grey;
 }
 
 .sub-links-m {
@@ -399,7 +394,6 @@
 
 .left-container-m {
   height: 2000px;
- 
 }
 
 .container-events-m {
@@ -443,12 +437,10 @@
 }
 
 .right-wrapper-m {
- 
   width: 75%;
   background-color: rgb(32, 31, 31);
   height: 100vh;
   overflow: auto;
-  
 }
 
 .container-nav-m {
@@ -466,7 +458,6 @@
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-
 }
 
 .right-content-m {
@@ -474,7 +465,6 @@
   flex-wrap: wrap;
   justify-content: center;
   width: 80%;
-
 }
 
 .container-image-m {
@@ -484,7 +474,6 @@
 }
 
 .container-platform-m {
-  
   top: -70px;
   position: relative;
   left: 10px;
@@ -493,14 +482,11 @@
 h3 {
   color: white;
   font-size: 16px;
-  
 }
 
 h5 {
   color: white;
-  
 }
-
 
 // h1 {
 //   color: black;
@@ -519,11 +505,9 @@ h2 {
   width: 90%;
   border: 2px solid grey;
 }
-
 .league-container-m:not(:last-child) {
   border-bottom: none;
-} 
-
+}
 .league-container-m:last-child {
   margin-bottom: 150px;
 }
@@ -572,9 +556,8 @@ h2 {
   display: flex;
   width: 30%;
   align-items: center;
-  margin: 5px;;
+  margin: 5px;
   border: 1px solid rgb(241, 85, 24);
-  
 }
 
 .div-league-m h3 {
@@ -584,7 +567,7 @@ h2 {
 .div-tournaments-m {
   display: flex;
   flex-direction: column;
- 
+
   width: 40%;
   margin: 5px;
 }
@@ -603,7 +586,6 @@ h2 {
 }
 
 .div-tts-name-m:not(:last-child) {
-  
   border-bottom: none;
 }
 
@@ -611,15 +593,13 @@ h2 {
   display: flex;
   flex-direction: column;
   width: 40%;
-  // height:100%;
   margin: 5px;
- 
 }
 
-.div-tts-name-m,.div-date-m h3 {
+.div-tts-name-m,
+.div-date-m h3 {
   padding: 10px 5px;
   font-size: 14px;
-  
 }
 
 .div-date-m {
@@ -628,7 +608,7 @@ h2 {
   height: 100%;
   width: 100%;
   padding: 0 20px;
-  
+
   border: 1px solid rgb(241, 85, 24);
 }
 
@@ -636,16 +616,9 @@ h2 {
   border-bottom: none;
 }
 
-
-
-
-
-
-
 /////////////////////////////////////end leagues
 
 /////////////////////////////////////// start nav
-
 
 .navbar-events-m {
   display: flex;
@@ -661,7 +634,6 @@ h2 {
   padding-right: 70px;
 }
 
-
 .cre-acc-m {
   text-align: center;
   align-items: center;
@@ -669,7 +641,6 @@ h2 {
   margin: 0 20px;
   padding: 5px;
   background-color: rgb(241, 85, 24);
-  
 }
 
 .link-nav-m {
@@ -678,7 +649,6 @@ h2 {
   font-size: medium;
   text-decoration: none;
   padding: 10px;
-  
 }
 
 .border-navbar-m {
@@ -686,10 +656,83 @@ h2 {
   margin-top: 70px;
   width: 100%;
   height: 2px;
-  background-image: linear-gradient(to right, rgba(88, 87, 87, 0), rgba(88, 87, 87,1));
+  background-image: linear-gradient(
+    to right,
+    rgba(88, 87, 87, 0),
+    rgba(88, 87, 87, 1)
+  );
 }
 
+///////////////////////////////////end nav
 
+.leagues-topbar-j {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+  height: 70px;
+  background-color: gray;
+  border-bottom: 2px solid rgb(88, 87, 87);
+  .events-top-j:first-child {
+    padding-left: 10px;
+  }
+  .events-top-j {
+    min-width: 20%;
+    max-width: 25%;
+    display: flex;
+    line-height: 70px;
+  }
+  .join-j {
+    min-width: 10%;
+    display: flex;
+    line-height: 70px;
+    h2 {
+      color: red;
+    }
+  }
+}
+
+// inside bar
+.cell-bar-j {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  .div-cell-j {
+    color: rgb(238, 238, 238);
+    min-height: 35px;
+    min-width: 25%;
+    max-width: 25%;
+    padding: 0 15px;
+    overflow: hidden;
+  }
+}
+
+.leagues-section-j:nth-child(2) {
+  margin-top: 90px;
+}
+
+.leagues-section-j {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 10px;
+  border-bottom: 2px solid grey;
+}
+///////////////////////////////////end nav
+
+//modal styling
+#blah2 {
+  font-family: 'Concert One', cursive;
+  text-align: center;
+  color: white;
+  background: linear-gradient(217deg, rgb(241, 85, 24), rgb(0, 0, 0) 89.71%);
+}
+#blah3 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
 
 ///////////////////////////////////end nav
 
@@ -720,7 +763,6 @@ h4 {
     height: 70px;
     line-height: 70px;
   }
-  
 
   .lol-link-m {
     height: 50%;
@@ -740,9 +782,6 @@ h4 {
   }
 }
 
-
-
-
 .main-container-m {
   display: flex;
   flex-direction: column;
@@ -750,146 +789,133 @@ h4 {
   margin: 20px;
   width: 100%;
   height: 100%;
-  border: 0.5px solid grey; 
+  border: 0.5px solid grey;
 
+  .container-tt-event-m {
+    display: flex;
+    width: 80%;
+    margin-top: 20px;
+    border-bottom: 0.5px solid grey;
 
-    .container-tt-event-m {
+    .container-tt-left-m {
+      width: 50%;
+      padding: 10px;
+    }
+
+    .content-event-m {
+      padding: 10px;
+      width: 50%;
+    }
+
+    .content-event-m h4 {
+      text-align: right;
+    }
+
+    .content-date-m h4 {
+      padding: 10px 0 5px 10px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  .main-section-m {
+    height: 100%;
+    width: 80%;
+
+    .opponents-section-m {
       display: flex;
-      width: 80%;
-      margin-top: 20px;
+      width: 100%;
+      flex-direction: row;
+      height: 100%;
       border-bottom: 0.5px solid grey;
 
+      .opponent-content-m {
+        display: flex;
+        flex-direction: column;
+        width: 45%;
+        height: 100%;
 
-        .container-tt-left-m {
-          width: 50%;
-          padding: 10px;
-        }
-
-        .content-event-m {
-          padding: 10px;
-          width: 50%;
-        }
-
-        .content-event-m h4 {
-          text-align: right;
-        }
-
-        .content-date-m h4 {
-          padding: 10px 0 5px 10px;
-          font-size: 14px;
-          font-weight: 500;
-        }
-    }
-
-    .main-section-m {
-      height: 100%;
-      width: 80%;
-
-       .opponents-section-m {
+        #right,
+        #two {
           display: flex;
-          width: 100%;
+          flex-direction: row-reverse;
+        }
+
+        .opp-name-img-m {
+          display: flex;
           flex-direction: row;
-          height: 100%;
+          width: 100%;
+          height: 110px;
+          padding: 10px;
+          // padding-bottom: 10px;
+          margin-bottom: 15px;
           border-bottom: 0.5px solid grey;
-       
 
-        .opponent-content-m {
+          .opponent-name-m {
+            display: flex;
+            justify-content: center;
+            line-height: 100px;
+            width: 50%;
+            height: 100px;
+            color: white;
+            padding-bottom: 10px;
+          }
+
+          img {
+            width: 100px;
+            height: 100px;
+            padding-bottom: 10px;
+          }
+        }
+
+        .container-location-score-m {
           display: flex;
-          flex-direction: column;
-          width: 45%;
-          height: 100%;
-       
-        
-          #right, #two {
-            display: flex;
-            flex-direction: row-reverse;
+          justify-content: space-around;
+          width: 100%;
+          height: 70px;
+
+          .location-m,
+          .score-m {
+            font-size: 18px;
+            color: white;
           }
-
-          .opp-name-img-m {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            height: 110px;
-            padding: 10px;
-            // padding-bottom: 10px;
-            margin-bottom: 15px;
-            border-bottom: 0.5px solid grey;
-
-
-            .opponent-name-m {
-              display: flex;
-              justify-content: center;
-              line-height: 100px;
-              width: 50%;
-              height: 100px;
-              color: white;
-              padding-bottom: 10px;
-            }
-  
-            img {
-              width: 100px;
-              height: 100px;
-              padding-bottom: 10px;
-            }
-          }
-
-          .container-location-score-m {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            height: 70px;
-            
-
-            .location-m, .score-m {
-              font-size: 18px;
-              color: white;
-            }
-
-            
-          }
-
-          
-
-         
         }
+      }
 
-        .versus-m {
-          text-align: center;
-          line-height: 150px;
-          width: 10%;
-          height: 100%;
-          color: white;
-        }
-
+      .versus-m {
+        text-align: center;
+        line-height: 150px;
+        width: 10%;
+        height: 100%;
+        color: white;
       }
     }
-    .watch-live-m {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 20px;
-      margin-top: 10px;
-      height: 50px;
-      width: 80%;
-    }
+  }
+  .watch-live-m {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    height: 50px;
+    width: 80%;
+  }
 
-    a, button {
-      display: flex;
-      justify-content: center;
-      height: 40px;
-      width: 40%;
-      line-height: 40px;
-      text-decoration: none;
-    }
+  a,
+  button {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    width: 40%;
+    line-height: 40px;
+    text-decoration: none;
+  }
 
-    button {
-      background-color: rgb(241, 85, 24);
-      color: white;
-      font-size: 16px;
-    }
-
+  button {
+    background-color: rgb(241, 85, 24);
+    color: white;
+    font-size: 16px;
+  }
 }
-
-
 
 ///////////////////////////////////////end LiveGames

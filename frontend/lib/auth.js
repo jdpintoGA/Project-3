@@ -15,10 +15,17 @@ function logout() {
 function getToken() {
   return localStorage.getItem('token')
 }
+function getUserId() {
+  const token = getToken()
+  if (!token) return false
+  const parts = token.split('.')
+  return JSON.parse(atob(parts[1])).sub
+}
 
 export default {
   setToken,
   isLoggedIn,
   logout,
-  getToken
+  getToken,
+  getUserId
 }

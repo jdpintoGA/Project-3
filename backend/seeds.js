@@ -35,7 +35,7 @@ mongoose.connect(
             eventType: 'Remote',
             eventDescription: 'Race Simulator',
             platform: 'Steam',
-            date: 19042020,
+            date: '2020-5-4',
             user: users[0]
           },
           {
@@ -43,7 +43,7 @@ mongoose.connect(
             eventType: 'Remote',
             eventDescription: 'FIFA Simulator',
             platform: 'PC',
-            date: 21052020,
+            date: '2020-6-19',
             user: users[0]
           },
           {
@@ -51,7 +51,7 @@ mongoose.connect(
             eventType: 'Remote',
             eventDescription: 'FIFA Simulator',
             platform: 'xbox',
-            date: 14042020,
+            date: '2020-12-09',
             user: users[1]
           },
           {
@@ -59,7 +59,7 @@ mongoose.connect(
             eventType: 'Remote',
             eventDescription: 'MOBA',
             platform: 'PC',
-            date: 11042020,
+            date: '2021-01-01',
             user: users[0]
           }
         ])

@@ -9,7 +9,7 @@ router
   // Find all our events(events displayed will be the ones locally) (asynchronous!) and send them back when done
   .get(eventController.index)
   // Create our new event (locally)
-  .post(secureRoute, eventController.create)
+  .post(secureRoute, eventController.createEvent)
 
 router
   .route('/event/:id')
@@ -25,5 +25,7 @@ router
 router.route('/register').post(userController.register)
 
 router.route('/login').post(userController.login)
+
+router.route('/users').get(userController.index)
 
 module.exports = router

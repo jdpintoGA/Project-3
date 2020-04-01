@@ -52,7 +52,15 @@ function login(req, res) {
     })
 }
 
+function index(req, res) {
+  // Find all our event (asynchronous!) and send them back when done
+  User.find().then(user => {
+    res.send(user)
+  })
+}
+
 module.exports = {
   register,
-  login
+  login,
+  index
 }

@@ -35,7 +35,7 @@ class CreateEvent extends React.Component {
       .post('/api/events', this.state.data, {
         headers: { Authorization: `Bearer ${auth.getToken()}` }
       })
-      .then(res => this.props.history.push(`/events`))
+      .then(res => this.props.history.push(`/hub`))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
@@ -49,7 +49,7 @@ class CreateEvent extends React.Component {
           <div className="loginSectionJ">
             <div className="fillJ"></div>
             <div className="contentJ">
-              <h1 className="title-m">Create Event</h1>
+              <h1 className="title-g">Create Event</h1>
               <EventForm
                 handleSubmit={event => this.handleSubmit(event)}
                 handleChange={event => this.handleChange(event)}

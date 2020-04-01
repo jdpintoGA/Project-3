@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Moment from 'react-moment'
-
 import addButton from '../images/add-icon.png'
 import games from '../images/games-icon.png'
 import NavBar from '../components/NavBar'
@@ -22,26 +21,18 @@ class Events extends React.Component {
     }
   }
 
-  // eslint-disable-next-line camelcase
-  handleClick(featured_img_m) {
-    // eslint-disable-next-line camelcase
-    axios
-      .get(
-        `https://open.faceit.com/data/v4/games?offset=0&limit=20/${featured_img_m}`,
-        {
-          headers: {
-            Authorization: 'Bearer 9a6523cf-c46d-434c-b623-3daeefa1acdb'
-          }
-        }
-      )
-      .then(response => {
-        this.setState({ singleGame: response.data })
-        this.toggleModal()
-      })
+  handleClick(game) {
+    this.setState({
+      selectedGame: game
+    })
   }
 
+  toggleModal() {
+    const newModal = !this.state.modalActive
+    this.setState({ modalActive: newModal })
+    this.setState({ selectedGame: null })
+  }
   fetchAllGames() {
-    // console.log('Fetching')
     axios
       .get('https://open.faceit.com/data/v4/games?offset=0&limit=20', {
         headers: {
@@ -53,7 +44,6 @@ class Events extends React.Component {
       })
       .catch(error => console.error(error))
   }
-
   fetchLeagues() {
     console.log('Fetching leagues')
     axios
@@ -61,7 +51,6 @@ class Events extends React.Component {
         'https://api.pandascore.co/series?token=1wCqgz0G63stMjHHwN0Bn2itQVq1z2Pc7szHZNR4MHpGWqkDy5o'
       )
       .then(res => {
-        console.log(res.data)
         this.setState({ leagues: res.data, currentSelection: 'Leagues' })
       })
       .catch(error => console.error(error))
@@ -95,117 +84,121 @@ class Events extends React.Component {
   //     .catch(error => console.error(error))
   // }
 
-  componentDidMount() {
-    // console.log("componentDidMount")
-    // this.fetchAllGames()
-  }
-
   handleLocalEvents() {
     console.log('Handling Local Events')
     // this.fetchUsers()
     this.fetchLocalEvents()
   }
 
-  handleGames() {
-    console.log('Fetching games')
+  fetchLiveGames() {
+    axios
+      .get(
+        'https://api.pandascore.co/lives?token=1wCqgz0G63stMjHHwN0Bn2itQVq1z2Pc7szHZNR4MHpGWqkDy5o'
+      )
+      .then(res => {
+        console.log(res.data)
+        this.setState({ liveGames: res.data, currentSelection: 'LiveGames' })
+      })
+      .catch(error => console.error(error))
+  }
+  componentDidMount() {
     this.fetchAllGames()
   }
-
+  handleGames() {
+    this.fetchAllGames()
+  }
   handleLeagues() {
     this.fetchLeagues()
   }
 
-  renderLeagues() {
-    var moment = require('moment')
-    console.log('valid ' + moment('2020-04-09T22:00:00Z').isValid())
+  // renderLeagues() {
+  //   var moment = require('moment')
+  //   console.log('valid ' + moment('2020-04-09T22:00:00Z').isValid())
 
-    if (!this.state.leagues) {
-      return null
-    }
-    return (
-      <>
-        <div className="leagues-topbar-m">
-          <div id="leagues-name-m">
-            <h2>Leagues</h2>
-          </div>
-          <div className="leagues-name-m">
-            <h2>Tournaments Name</h2>
-          </div>
-          <div className="leagues-name-m">
-            <h2>Tournaments Date</h2>
-          </div>
-        </div>
-        {this.state.leagues.map((league, i) => {
-          if (league.name === '' || league.name === null) {
-            return null
-          }
-          return (
-            <section key={i} className="leagues-section-m">
-              <div className="div-league-m">
-                <h3>{league.name}</h3>
-              </div>
-              <div className="div-tournaments-m">
-                {league.tournaments.map((tournament, i) => {
-                  return (
-                    <>
-                      <div key={i} className="div-tts-name-m">
-                        <h3>Tournament: {tournament.name}</h3>
-                      </div>
-                    </>
-                  )
-                })}
-              </div>
-              <div className="div-tournaments-dates-m">
-                {league.tournaments.map((tournament, i) => {
-                  return (
-                    <>
-                      <div key={i} className="div-date-m">
-                        <h3>
-                          Start:{' '}
-                          <Moment format="YYYY/MM/DD">
-                            {tournament.start_at}
-                          </Moment>
-                        </h3>
-                        <h3>
-                          End:{' '}
-                          <Moment format="YYYY/MM/DD">
-                            {tournament.end_at}
-                          </Moment>
-                        </h3>
-                      </div>
-                    </>
-                  )
-                })}
-              </div>
-            </section>
-          )
-        })}
-      </>
-    )
-  }
-  toggleModal() {
-    const newModal = !this.state.modalActive
-    this.setState({ modalActive: newModal })
+  //   if (!this.state.leagues) {
+  //     return null
+  //   }
+  //   return <>
+  //     <div className="leagues-topbar-m">
+  //       <div id="leagues-name-m">
+  //         <h2>Leagues</h2>
+  //       </div>
+  //       <div className="leagues-name-m">
+  //         <h2>Tournaments Name</h2>
+  //       </div>
+  //       <div className="leagues-name-m">
+  //         <h2>Tournaments Date</h2>
+  //       </div>
+  //     </div>
+  //     {this.state.leagues.map(league => {
+  //       if (league.name === '' || league.name === null) {
+  //         return null
+  //       }
+  //       return <section
+  //         key={league._id}
+  //         className="leagues-section-m">
+
+  //         <div className="div-league-m">
+  //           <h3>{league.name}</h3>
+  //         </div>
+  //         <div className="div-tournaments-m">
+  //           {league.tournaments.map(tournament => {
+
+  //             return <>
+  //               <div className="div-tts-name-m">
+  //                 <h3 key={tournament._id}>Tournament: {tournament.name}</h3>
+
+  //               </div>
+
+  //             </>
+  //           })}
+  //         </div>
+  //         <div className="div-tournaments-dates-m">
+  //           {league.tournaments.map(tournament => {
+
+  //             return <>
+  //               <div className="div-date-m">
+  //                 <h3>Start: <Moment format="YYYY/MM/DD">
+  //                   {tournament.start_at}
+
+  //                 </Moment>
+  //                 </h3>
+  //                 <h3>End: <Moment format="YYYY/MM/DD">
+  //                   {tournament.end_at}
+  //                 </Moment>
+  //                 </h3>
+
+  //               </div>
+  //             </>
+  //           })}
+  //         </div>
+
+  //       </section>
+  //     })}
+
+  //   </>
+  // }
+
+  handleLiveGames() {
+    this.fetchLiveGames()
   }
 
   render() {
-    // console.log('rendering')
-
     let component
-
     if (this.state.currentSelection === 'Games') {
       component = this.renderGames()
     } else if (this.state.currentSelection === 'Leagues') {
       component = this.renderLeagues()
+    } else if (this.state.currentSelection === 'LiveGames') {
+      component = this.renderLiveGames()
     } else if (this.state.currentSelection === 'LocalEvents') {
       component = this.renderLocalEvents()
     }
-
+    console.log(component)
     // const { image } = this.state.games.featured_img_m
     return (
       <div className="event-wrap-m">
         <NavBar />
-
         <section className="event-section-m">
           <div className="left-wrapper-m">
             <div className="container-top-left">
@@ -278,23 +271,23 @@ class Events extends React.Component {
               </div>
             </div>
           </div>
-
           <div className="right-wrapper-m">
             <div className="container-nav-m">
               <Nav />
             </div>
             <div className="right-container-m">{component}</div>
+            {this.state.selectedGame ? (
+              <GameModal
+                long_label={this.state.selectedGame.long_label}
+                cover={this.state.selectedGame.assets.cover}
+                platforms={this.state.selectedGame.platforms}
+                regions={this.state.selectedGame.regions}
+                featured_img_m={this.state.selectedGame.assets.featured_img_m}
+                toggleModal={() => this.toggleModal()}
+              />
+            ) : null}
           </div>
         </section>
-        {this.state.modalActive ? (
-          <GameModal
-            long_label={this.state.singleGame.long_label}
-            platforms={this.state.singleGame.platforms}
-            regions={this.state.singleGame.regions}
-            featured_img_l={this.state.singleGame.featured_img_l}
-            toggleModal={() => this.toggleModal()}
-          />
-        ) : null}
       </div>
     )
   }
@@ -314,10 +307,13 @@ class Events extends React.Component {
           }
           return (
             <div key={game.game_id} className="container-image-m">
-              <img src={game.assets.featured_img_m} alt="" />
+              <img
+                onClick={() => this.handleClick(game)}
+                src={game.assets.featured_img_m}
+                alt=""
+              />
               <div className="container-platform-m">
                 <h3>Platform: {game.platforms}</h3>
-
                 <h5>Region: {game.regions}</h5>
               </div>
             </div>
@@ -384,6 +380,188 @@ class Events extends React.Component {
       </>
     )
   }
-}
 
+  renderLiveGames() {
+    var moment = require('moment')
+    moment('2020-04-09T22:00:00Z').isValid()
+    if (!this.state.liveGames) {
+      return null
+    }
+    return (
+      <>
+        <div className="container-lol-m">
+          <div className="container-text-m">
+            <p>Check out the best place to watch Esports and earn rewards.</p>
+          </div>
+          <Link
+            className="lol-link-m"
+            to="//watch.lolesports.com/"
+            target="_blank"
+          >
+            <p>Check Here</p>
+          </Link>
+        </div>
+        {this.state.liveGames.map((game, i) => {
+          return (
+            <div key={i} className="main-container-m">
+              <div className="container-tt-event-m">
+                <div className="container-tt-left-m">
+                  <div className="content-tt-m">
+                    <p>Tournament</p>
+                    <h4>{game.match.tournament.name}</h4>
+                  </div>
+                  <div className="content-date-m">
+                    <h4>
+                      {' '}
+                      Start date:{' '}
+                      <Moment format="YYYY/MM/DD">
+                        {game.match.tournament.begin_at}
+                      </Moment>
+                    </h4>
+                  </div>
+                </div>
+                <div className="content-event-m">
+                  <p>Game</p>
+                  <h4>{game.event.game}</h4>
+                </div>
+              </div>
+              <section className="main-section-m">
+                <div className="opponents-section-m">
+                  <div className="opponent-content-m">
+                    <div className="opp-name-img-m">
+                      <div className="opponent-name-m">
+                        {game.match.opponents[0].opponent.name}
+                      </div>
+                      {/* <div className="opponent-img-m"> */}
+                      <img
+                        src={game.match.opponents[0].opponent.image_url}
+                        alt="Image"
+                      />
+                      {/* </div> */}
+                    </div>
+                    <div className="container-location-score-m">
+                      <div className="location-m">
+                        Location
+                        <h4>{game.match.opponents[0].opponent.location}</h4>
+                      </div>
+                      <div className="score-m">
+                        Score
+                        <h4>{game.match.results[0].score}</h4>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="versus-m">VS</div>
+                  <div className="opponent-content-m">
+                    <div className="opp-name-img-m" id="right">
+                      <div className="opponent-name-m">
+                        {game.match.opponents[1].opponent.name}
+                      </div>
+                      {/* <div className="opponent-img-m"> */}
+                      <img
+                        src={game.match.opponents[1].opponent.image_url}
+                        alt="Image"
+                      />
+                      {/* </div> */}
+                    </div>
+                    <div className="container-location-score-m" id="two">
+                      {/* <div className="container-location-m"> */}
+                      <div className="location-m">
+                        Location
+                        <h4>{game.match.opponents[1].opponent.location}</h4>
+                      </div>
+                      <div className="score-m">
+                        Score
+                        <h4>{game.match.results[1].score}</h4>
+                      </div>
+                      {/* </div> */}
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <div className="watch-live-m">
+                <a
+                  href={game.match.live_url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <button>Watch Live</button>
+                </a>
+              </div>
+            </div>
+          )
+        })}
+      </>
+    )
+  }
+
+  renderLeagues() {
+    var moment = require('moment')
+    moment('2020-04-09T22:00:00Z').isValid()
+    if (!this.state.leagues) {
+      return null
+    }
+    return (
+      <>
+        <div className="leagues-topbar-m">
+          <div id="leagues-name-m">
+            <h2>Leagues</h2>
+          </div>
+          <div className="leagues-name-m">
+            <h2>Tournaments Name</h2>
+          </div>
+          <div className="leagues-name-m">
+            <h2>Tournaments Date</h2>
+          </div>
+        </div>
+        {this.state.leagues.map(league => {
+          if (league.name === '' || league.name === null) {
+            return null
+          }
+          return (
+            <div key={league._id} className="league-container-m">
+              <section className="leagues-section-m">
+                <div className="div-league-m">
+                  <h3>{league.name}</h3>
+                </div>
+                <div className="div-tournaments-m">
+                  {league.tournaments.map(tournament => {
+                    return (
+                      <>
+                        <div className="div-tts-name-m">
+                          <h3 key={tournament._id}>{tournament.name}</h3>
+                        </div>
+                      </>
+                    )
+                  })}
+                </div>
+                <div className="div-tournaments-dates-m">
+                  {league.tournaments.map(tournament => {
+                    return (
+                      <>
+                        <div className="div-date-m">
+                          <h3>
+                            Start:{' '}
+                            <Moment format="YYYY/MM/DD">
+                              {tournament.start_at}
+                            </Moment>
+                          </h3>
+                          <h3>
+                            End:{' '}
+                            <Moment format="YYYY/MM/DD">
+                              {tournament.end_at}
+                            </Moment>
+                          </h3>
+                        </div>
+                      </>
+                    )
+                  })}
+                </div>
+              </section>
+            </div>
+          )
+        })}
+      </>
+    )
+  }
+}
 export default Events

@@ -44,8 +44,8 @@ class NavBar extends React.Component {
             <Link className="link-m" to="/">
               HOME
             </Link>
-            <Link className="link-m" to="/events">
-              EVENTS
+            <Link className="link-m" to="/hub">
+              HUB
             </Link>
             {isLoggedIn && (
               <Link className="link-m" to="/create">
@@ -68,7 +68,7 @@ class NavBar extends React.Component {
                 onClick={() => this.handleLogout()}
                 className="link-m"
               >
-                LOG Out
+                LOG OUT
               </Link>
             )}
           </div>

@@ -213,11 +213,16 @@
       }
 
       .input-g {
-        width: 300px;
+        width: 600px;
         min-height: 20px;
         &:hover {
           background-color: rgb(170, 170, 170);
         }
+      }
+
+      .title-g {
+        color: rgb(46, 46, 46);
+        font-size: 23px;
       }
 
       .buttonJ {
@@ -232,7 +237,7 @@
         }
       }
       .button-G {
-        min-width: 150px;
+        min-width: 200px;
         background-color: black;
         color: rgb(255, 255, 255);
         margin-top: 2px;
@@ -341,8 +346,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   border: 2px solid grey;
   background-color: rgb(241, 85, 24);
   margin-top: 80px;
@@ -356,8 +361,8 @@
 }
 
 .add-image-m {
-  width: 30px;
-  height: 30px;
+  width: 100%;
+  height: 100%;
 }
 
 .container-links-m {
@@ -423,10 +428,12 @@
 .events-links-m {
   justify-content: left;
   margin-left: 55px;
+  // background-color: green;
   color: rgb(255, 255, 255);
   padding: 10px;
   font-size: 24px;
   font-weight: 500;
+  width: 150px;
 }
 
 .right-wrapper-m {
@@ -494,13 +501,24 @@ h2 {
   font-size: 24px;
 }
 
+.league-container-m {
+  width: 90%;
+  border: 2px solid grey;
+}
+.league-container-m:not(:last-child) {
+  border-bottom: none;
+}
+.league-container-m:last-child {
+  margin-bottom: 150px;
+}
+
 .leagues-topbar-m {
   position: fixed;
   display: flex;
   flex-wrap: wrap;
   width: 75%;
-  height: 70px;
-  background-color: gray;
+  height: 60px;
+  background-color: rgb(56, 55, 55);
   border-bottom: 2px solid rgb(88, 87, 87);
 }
 
@@ -508,7 +526,8 @@ h2 {
   width: 30%;
   display: flex;
   line-height: 70px;
-  justify-content: center;
+  padding-left: 100px;
+  // justify-content: center;
   text-align: center;
 }
 
@@ -516,11 +535,12 @@ h2 {
   width: 35%;
   display: flex;
   line-height: 70px;
+  padding-left: 40px;
   // justify-content: space-around;
   text-align: center;
 }
 
-.leagues-section-m:nth-child(2) {
+.league-container-m:nth-child(2) {
   margin-top: 90px;
 }
 
@@ -528,31 +548,45 @@ h2 {
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin-top: 10px;
-  border-bottom: 2px solid grey;
+  // margin-top: 10px;
+  padding: 10px;
 }
 
 .div-league-m {
   display: flex;
   width: 30%;
-  padding-left: 20px;
   align-items: center;
   margin: 5px;
+  border: 1px solid rgb(241, 85, 24);
+}
+
+.div-league-m h3 {
+  padding: 20px;
 }
 
 .div-tournaments-m {
   display: flex;
   flex-direction: column;
+
   width: 40%;
   margin: 5px;
 }
 
 .div-tts-name-m {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding-left: 80px;
+  padding: 0 80px;
+  align-items: center;
+  height: 100%;
   width: 100%;
+  border: 1px solid rgb(241, 85, 24);
+}
+
+.div-tts-name-m h3 {
+  padding: 0 20px;
+}
+
+.div-tts-name-m:not(:last-child) {
+  border-bottom: none;
 }
 
 .div-tournaments-dates-m {
@@ -560,19 +594,28 @@ h2 {
   flex-direction: column;
   width: 40%;
   height: 100%;
+  // height:100%;
   margin: 5px;
 }
 
 .div-tts-name-m,
 .div-date-m h3 {
   padding: 10px 5px;
+  font-size: 14px;
 }
 
 .div-date-m {
-  padding: 0 30px;
   display: flex;
-  // width: 80%;
-  // align-items: flex-start;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 0 20px;
+
+  border: 1px solid rgb(241, 85, 24);
+}
+
+.div-date-m:not(:last-child) {
+  border-bottom: none;
 }
 
 /////////////////////////////////////end leagues
@@ -677,3 +720,204 @@ h2 {
   margin-top: 10px;
   border-bottom: 2px solid grey;
 }
+///////////////////////////////////end nav
+
+//modal styling
+#blah2 {
+  font-family: 'Concert One', cursive;
+  text-align: center;
+  color: white;
+  background: linear-gradient(217deg, rgb(241, 85, 24), rgb(0, 0, 0) 89.71%);
+}
+#blah3 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+///////////////////////////////////end nav
+
+///////////////////////////////////////start liveGames
+p {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+h4 {
+  color: white;
+  font-size: 18px;
+}
+
+.container-lol-m {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  margin: 20px;
+  border: 0.5px solid grey;
+
+  .container-text-m {
+    margin: 10px;
+    width: 70%;
+    height: 70px;
+    line-height: 70px;
+  }
+
+  .lol-link-m {
+    height: 50%;
+    width: 150px;
+    font-size: 24px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    border: 0.5px solid grey;
+    background-color: rgb(241, 85, 24);
+  }
+
+  .lol-link-m p {
+    color: white;
+    padding: 10px;
+    margin: 0 auto;
+  }
+}
+
+.main-container-m {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  width: 100%;
+  height: 100%;
+  border: 0.5px solid grey;
+
+  .container-tt-event-m {
+    display: flex;
+    width: 80%;
+    margin-top: 20px;
+    border-bottom: 0.5px solid grey;
+
+    .container-tt-left-m {
+      width: 50%;
+      padding: 10px;
+    }
+
+    .content-event-m {
+      padding: 10px;
+      width: 50%;
+    }
+
+    .content-event-m h4 {
+      text-align: right;
+    }
+
+    .content-date-m h4 {
+      padding: 10px 0 5px 10px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  .main-section-m {
+    height: 100%;
+    width: 80%;
+
+    .opponents-section-m {
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      height: 100%;
+      border-bottom: 0.5px solid grey;
+
+      .opponent-content-m {
+        display: flex;
+        flex-direction: column;
+        width: 45%;
+        height: 100%;
+
+        #right,
+        #two {
+          display: flex;
+          flex-direction: row-reverse;
+        }
+
+        .opp-name-img-m {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          height: 110px;
+          padding: 10px;
+          // padding-bottom: 10px;
+          margin-bottom: 15px;
+          border-bottom: 0.5px solid grey;
+
+          .opponent-name-m {
+            display: flex;
+            justify-content: center;
+            line-height: 100px;
+            width: 50%;
+            height: 100px;
+            color: white;
+            padding-bottom: 10px;
+          }
+
+          img {
+            width: 100px;
+            height: 100px;
+            padding-bottom: 10px;
+          }
+        }
+
+        .container-location-score-m {
+          display: flex;
+          justify-content: space-around;
+          width: 100%;
+          height: 70px;
+
+          .location-m,
+          .score-m {
+            font-size: 18px;
+            color: white;
+          }
+        }
+      }
+
+      .versus-m {
+        text-align: center;
+        line-height: 150px;
+        width: 10%;
+        height: 100%;
+        color: white;
+      }
+    }
+  }
+  .watch-live-m {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    height: 50px;
+    width: 80%;
+  }
+
+  a,
+  button {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    width: 40%;
+    line-height: 40px;
+    text-decoration: none;
+  }
+
+  button {
+    background-color: rgb(241, 85, 24);
+    color: white;
+    font-size: 16px;
+  }
+}
+
+///////////////////////////////////////end LiveGames

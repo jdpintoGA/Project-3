@@ -2,10 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-// import 'bulma'
-
 import '../styles/style.scss'
 import '../styles/button.scss'
+import 'bulma'
 
 import Login from '../components/UserLogin'
 import Register from '../components/UserRegister'
@@ -20,7 +19,7 @@ const App = () => (
       <Route path="/login" component={Login} />
       <Route exact path="/" component={Home} />
       <Route exact path="/create" component={CreateEvent} />
-      <Route exact path="/events" component={Events} />
+      <Route exact path="/hub" component={Events} />
     </Switch>
   </BrowserRouter>
 )

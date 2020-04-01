@@ -90,13 +90,6 @@ class Events extends React.Component {
     this.fetchLiveGames()
   }
 
-
-
-
-
-
-   
-  
   toggleModal() {
     const newModal = !this.state.modalActive
     this.setState({ modalActive: newModal })

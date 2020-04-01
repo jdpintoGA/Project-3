@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 // import 'bulma'
 
 import '../styles/style.scss'
+import '../styles/button.scss'
 
 import Login from '../components/UserLogin'
 import Register from '../components/UserRegister'

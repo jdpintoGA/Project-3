@@ -6,7 +6,8 @@ const schema = new mongoose.Schema({
   eventDescription: { type: String, required: true },
   platform: { type: String, required: false },
   location: { type: String, required: false },
-  date: { type: Number, required: true },
+  // comments: [{ body: String, date: Date }],
+  date: { type: Date, default: Date.now },
   user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 })
 

@@ -1,0 +1,40 @@
+.btn {
+  width: 30px;
+  height: 20px;
+  background: none;
+  border: 4px solid;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+}
+
+.btn::before,
+.btn::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 4.5px;
+  background: rgb(241, 85, 24);
+  transition: 0.2s linear;
+}
+
+.btn::before {
+  top: -4px;
+  left: 10%;
+}
+
+.btn::after {
+  bottom: -4px;
+  right: 10%;
+}
+
+.btn:hover::before {
+  left: 50%;
+}
+
+.btn:hover::after {
+  right: 50%;
+}

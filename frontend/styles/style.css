@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 .container-m {
   width: 100vw;
   height: 100vh;
@@ -12,12 +11,9 @@
   transform-style: preserve-3d;
   background-color: black;
 }
-
-///////////////////////////////////////// sideBar
 #check {
   display: none;
 }
-
 #check + label {
   position: absolute;
   top: 2em;
@@ -27,35 +23,25 @@
   align-items: center;
   cursor: pointer;
 }
-
 #check + label svg path {
   transform-origin: 35% 50%;
   transition: 0.3s;
 }
-
 #check:checked + label svg #one {
   transform: rotate(45deg);
 }
-
 #check:checked + label svg #two {
   transform: rotate(-45deg);
 }
-
 .nav-ul-m {
   display: flex;
   flex-direction: column;
   padding-top: 30px;
 }
-
 .nav-m {
   position: absolute;
   width: 24vw;
-  background: linear-gradient(
-    217deg,
-    rgb(241, 85, 24),
-    rgb(0, 0, 0) 89.71%
-  );
-
+  background: linear-gradient(217deg, #f15518, #000 89.71%);
   height: 100vh;
   padding: 80px 20px;
   display: flex;
@@ -63,32 +49,26 @@
   transition: 0.5s;
   transform: translateX(-100%);
 }
-
 #check:checked + label ~ .nav-m {
   transform: translateX(0%);
 }
-
 .link-m {
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  color: #fff;
   padding: 10px;
   font-size: 24px;
   font-weight: 700;
   transition: 0.5s;
-  border-bottom: 2px solid rgba(0, 0, 0, 0);
-  border-top: 1px solid rgba(0, 0, 0, 0);
+  border-bottom: 2px solid transparent;
+  border-top: 1px solid transparent;
   cursor: pointer;
 }
-
 .link-m:hover {
   transform: translateX(10px);
-  color: rgb(0, 0, 0);
-  border-bottom: 2px solid rgba(0, 0, 0, 1);
+  color: #000;
+  border-bottom: 2px solid #000;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
-///////////////////////////////////////////////////// end sideBar
-
-////////////////////////////////////////////////////// start homePage
 .section-m {
   position: relative;
   width: 100%;
@@ -98,7 +78,6 @@
   background-repeat: no-repeat;
   transition: 0.5s;
 }
-
 .content-m {
   display: flex;
   flex-direction: column;
@@ -108,59 +87,40 @@
   max-width: 800px;
   height: 90vh;
 }
-
-
 .container-games-m {
   display: flex;
   flex-direction: wrap;
 }
-
 .image-container-m {
   padding: 20px;
   margin-top: 50px;
 }
-
 .games-image-m:hover {
-  transform:scale(1.4,1.4);
+  transform: scale(1.4, 1.4);
   cursor: pointer;
 }
-
 .games-image-m {
-  transition: all .4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
-
-
-
 .container-creacc-login-m {
   display: flex;
 }
-
 #check:checked + label ~ .section-m {
   transform: rotateY(30deg) translateX(25vw);
 }
-
-////////////////////////////////////////////////////end homePage
-
-///////////////////////////////////////////////////// start Footer
 .footer-m {
   display: flex;
   justify-content: space-around;
   z-index: 100;
   width: 100vw;
   height: 10vh;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(41, 39, 39, 0),
-    rgba(41, 39, 39, 1)
-  );
+  background-image: linear-gradient(to bottom, rgba(41, 39, 39, 0), #292727);
 }
-
 .faceit-logo-m {
   align-self: center;
   height: 110px;
   width: 190px;
 }
-
 .git-container-links-m {
   display: flex;
   justify-content: flex-end;
@@ -168,141 +128,109 @@
   align-self: center;
   width: 25%;
 }
-
 .git-links-m {
   color: white;
   font-size: 20px;
 }
-
-
-///////////////////////////////////////////////////// end Footer
-
-/////////////////////////////////////////////////////////login & register pages
 .loginPageJ {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(241, 85, 24);
-  .loginSectionJ {
-    z-index: 1;
-    display: flex;
-    flex-flow: column;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-grow: 1;
-    height: 100%;
-    color: rgb(0, 0, 0);
-    border-right: 13px solid rgb(46, 46, 46);
-
-    border-radius: 50%;
-
-    .contentJ {
-      display: flex;
-      flex-flow: column;
-      align-items: flex-end;
-      text-align: right;
-      border-right: 20px solid rgb(0, 0, 0);
-      border-radius: 50%;
-      padding-top: 75px;
-      padding-bottom: 75px;
-      padding-right: 25%;
-      width: 100%;
-      margin-right: -25px;
-      min-height: 350px;
-
-      .fieldJ {
-        color: rgb(46, 46, 46);
-      }
-      input {
-        min-width: 150px;
-        min-height: 20px;
-        &:hover {
-          background-color: rgb(170, 170, 170);
-        }
-      }
-
-      .input-g {
-        width: 600px;
-        min-height: 20px;
-        &:hover {
-          background-color: rgb(170, 170, 170);
-        }
-      }
-
-      .title-g {
-        color: rgb(46, 46, 46);
-        font-size: 23px;
-      }
-
-      .buttonJ {
-        background-color: black;
-        color: rgb(255, 255, 255);
-        margin-top: 2px;
-        padding: 2px 5px;
-        &:hover {
-          background-color: rgb(255, 255, 255);
-          color: rgb(0, 0, 0);
-          border: 0.5px solid black;
-        }
-      }
-      .button-G {
-        min-width: 200px;
-        background-color: black;
-        color: rgb(255, 255, 255);
-        margin-top: 2px;
-        padding: 2px 5px;
-        &:hover {
-          background-color: rgb(255, 255, 255);
-          color: rgb(0, 0, 0);
-          border: 0.5px solid black;
-        }
-      }
-    }
-  }
+  background-color: #f15518;
+}
+.loginPageJ .loginSectionJ {
+  z-index: 1;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-grow: 1;
+  height: 100%;
+  color: #000;
+  border-right: 13px solid #2e2e2e;
+  border-radius: 50%;
+}
+.loginPageJ .loginSectionJ .contentJ {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  text-align: right;
+  border-right: 20px solid #000;
+  border-radius: 50%;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  padding-right: 25%;
+  width: 100%;
+  margin-right: -25px;
+  min-height: 350px;
+}
+.loginPageJ .loginSectionJ .contentJ .fieldJ {
+  color: #2e2e2e;
+}
+.loginPageJ .loginSectionJ .contentJ input {
+  min-width: 150px;
+  min-height: 20px;
+}
+.loginPageJ .loginSectionJ .contentJ input:hover {
+  background-color: #aaa;
+}
+.loginPageJ .loginSectionJ .contentJ .input-g {
+  width: 600px;
+  min-height: 20px;
+}
+.loginPageJ .loginSectionJ .contentJ .input-g:hover {
+  background-color: #aaa;
+}
+.loginPageJ .loginSectionJ .contentJ .title-g {
+  color: #2e2e2e;
+  font-size: 23px;
+}
+.loginPageJ .loginSectionJ .contentJ .buttonJ {
+  background-color: black;
+  color: #fff;
+  margin-top: 2px;
+  padding: 2px 5px;
+}
+.loginPageJ .loginSectionJ .contentJ .buttonJ:hover {
+  background-color: #fff;
+  color: #000;
+  border: 0.5px solid black;
+}
+.loginPageJ .loginSectionJ .contentJ .button-G {
+  min-width: 200px;
+  background-color: black;
+  color: #fff;
+  margin-top: 2px;
+  padding: 2px 5px;
+}
+.loginPageJ .loginSectionJ .contentJ .button-G:hover {
+  background-color: #fff;
+  color: #000;
+  border: 0.5px solid black;
 }
 .wrapRegisterJ {
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
   margin-left: -10px;
-  .registerSectionJ {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-evenly;
-    height: 80vh;
-    width: 35vw;
-    border-left: 7px solid rgb(170, 170, 170);
-    border-radius: 50%;
-    margin: 30px -10px 30px 0;
-    color: rgb(255, 255, 255);
-
-    .toRegJ {
-      padding-left: 10%;
-    }
-  }
 }
-
+.wrapRegisterJ .registerSectionJ {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  height: 80vh;
+  width: 35vw;
+  border-left: 7px solid #aaa;
+  border-radius: 50%;
+  margin: 30px -10px 30px 0;
+  color: #fff;
+}
+.wrapRegisterJ .registerSectionJ .toRegJ {
+  padding-left: 10%;
+}
 .fillJ {
   height: 33px;
   width: 300px;
 }
-
-//Event Form
-
-
-
-//Colors being used
-
-//Triple shape
-// rgb(0, 0, 0) black line
-// rgb(46, 46, 46) medium gray
-// rgb(170, 170, 170) light gray
-
-//background
-//rgb(241, 85, 24) orange
-
-/////////////////////////////////////////////////end of login&register
-
-///////////////////////////////////////////////start events page
 .event-wrap-m {
   display: flex;
   width: 100vw;
@@ -311,10 +239,7 @@
   perspective: 1000px;
   transform-style: preserve-3d;
   background-color: black;
-  
 }
-
-
 .event-section-m {
   z-index: -1;
   display: flex;
@@ -326,30 +251,25 @@
   background-repeat: no-repeat;
   transition: 0.5s;
 }
-
-
 .left-wrapper-m {
   width: 25%;
-  background-color: rgb(27, 27, 27);
+  background-color: #1b1b1b;
   height: 100vh;
   overflow: auto;
 }
-
 .container-top-left {
-  background-color: rgb(27, 27, 27);
+  background-color: #1b1b1b;
   width: 25%;
   height: 140px;
   position: fixed;
 }
-
 .border-navbar-left-m {
   position: fixed;
   margin-top: 70px;
   width: 25%;
   height: 2px;
-  background-image: linear-gradient(to left, rgba(88, 87, 87, 0), rgba(88, 87, 87,1));
+  background-image: linear-gradient(to left, rgba(88, 87, 87, 0), #585757);
 }
-
 .btn-add-m {
   position: fixed;
   display: flex;
@@ -358,110 +278,92 @@
   width: 64px;
   height: 64px;
   border: 2px solid grey;
-  background-color: rgb(241, 85, 24);
+  background-color: #f15518;
   margin-top: 80px;
   cursor: pointer;
 }
-
 .btn-add-m:hover .container-links-m {
   display: flex;
   flex-direction: column;
   position: absolute;
-
-} 
-
+}
 .add-image-m {
   width: 100%;
   height: 100%;
 }
-
 .container-links-m {
   display: none;
   width: 180px;
-  background-color: rgb(241, 85, 24);
+  background-color: #f15518;
   margin-left: 120px;
   margin-top: 62px;
-  border: 2px solid grey
+  border: 2px solid grey;
 }
-
 .sub-links-m {
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  color: #fff;
   padding: 10px;
   font-size: 18px;
   font-weight: 500;
   transition: 0.5s;
-  border-bottom: 2px solid rgba(0, 0, 0, 0);
-  border-top: 1px solid rgba(0, 0, 0, 0);
+  border-bottom: 2px solid transparent;
+  border-top: 1px solid transparent;
   cursor: pointer;
 }
-
 .sub-links-m:hover {
   transform: translateX(10px);
-  color: rgb(0, 0, 0);
+  color: #000;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
-
 .left-container-m {
   height: 2000px;
- 
 }
-
 .container-events-m {
   text-decoration: none;
   display: flex;
   width: 100%;
   height: 49px;
   justify-content: flex-start;
-  background-color: rgb(27, 27, 27);
+  background-color: #1b1b1b;
   cursor: pointer;
 }
-
 .container-events-m:first-child {
   margin-top: 200px;
 }
-
 .container-events-m:hover {
-  background-color: rgb(56, 55, 55);
+  background-color: #383737;
 }
-
 .container-event-image-m {
   width: 50px;
   height: 49px;
   margin-left: 10px;
   border-radius: 25px;
   justify-content: center;
-  background-color: rgb(27, 27, 27);
+  background-color: #1b1b1b;
   background-size: contain;
   background-repeat: no-repeat;
 }
-
 .events-links-m {
   justify-content: left;
   margin-left: 55px;
-  color: rgb(255, 255, 255);
+  color: #fff;
   padding: 10px;
   font-size: 24px;
   font-weight: 500;
 }
-
 .right-wrapper-m {
- 
   width: 75%;
-  background-color: rgb(32, 31, 31);
+  background-color: #201f1f;
   height: 100vh;
   overflow: auto;
-  
 }
-
 .container-nav-m {
   z-index: 100;
   height: 72px;
   width: 75%;
-  background-color: rgb(32, 31, 31);
+  background-color: #201f1f;
   position: fixed;
 }
-
 .right-container-m {
   display: flex;
   margin-top: 70px;
@@ -469,57 +371,34 @@
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-
 }
-
 .right-content-m {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: 80%;
-
 }
-
 .container-image-m {
   margin: 30px;
   width: 212px;
   height: 320px;
 }
-
 .container-platform-m {
-  
   top: -70px;
   position: relative;
   left: 10px;
 }
-
 h3 {
   color: white;
   font-size: 16px;
-  
 }
-
 h5 {
   color: white;
-  
 }
-
-
-// h1 {
-//   color: black;
-// }
-
-///////////////////////////////////end events page
-
-/////////////////////////////////////start leagues
-
 h2 {
   color: white;
   font-size: 24px;
 }
-
-
-
 .leagues-topbar-m {
   position: fixed;
   display: flex;
@@ -527,9 +406,8 @@ h2 {
   width: 75%;
   height: 70px;
   background-color: gray;
-  border-bottom: 2px solid rgb(88, 87, 87);
+  border-bottom: 2px solid #585757;
 }
-
 #leagues-name-m {
   width: 30%;
   display: flex;
@@ -537,19 +415,15 @@ h2 {
   justify-content: center;
   text-align: center;
 }
-
 .leagues-name-m {
   width: 35%;
   display: flex;
   line-height: 70px;
-  // justify-content: space-around;
   text-align: center;
 }
-
 .leagues-section-m:nth-child(2) {
   margin-top: 90px;
 }
-
 .leagues-section-m {
   display: flex;
   flex-direction: row;
@@ -557,22 +431,19 @@ h2 {
   margin-top: 10px;
   border-bottom: 2px solid grey;
 }
-
 .div-league-m {
   display: flex;
   width: 30%;
   padding-left: 20px;
   align-items: center;
-  margin: 5px;;
+  margin: 5px;
 }
-
 .div-tournaments-m {
   display: flex;
   flex-direction: column;
   width: 40%;
   margin: 5px;
 }
-
 .div-tts-name-m {
   display: flex;
   align-items: flex-start;
@@ -580,38 +451,21 @@ h2 {
   padding-left: 80px;
   width: 100%;
 }
-
 .div-tournaments-dates-m {
   display: flex;
   flex-direction: column;
   width: 40%;
-  height:100%;
+  height: 100%;
   margin: 5px;
 }
-
-.div-tts-name-m,.div-date-m h3 {
+.div-tts-name-m,
+.div-date-m h3 {
   padding: 10px 5px;
 }
-
 .div-date-m {
   padding: 0 30px;
   display: flex;
-  // width: 80%;
-  // align-items: flex-start;
-
 }
-
-
-
-
-
-
-
-/////////////////////////////////////end leagues
-
-/////////////////////////////////////// start nav
-
-
 .navbar-events-m {
   display: flex;
   width: 100%;
@@ -625,55 +479,37 @@ h2 {
   align-items: center;
   padding-right: 70px;
 }
-
-
 .cre-acc-m {
   text-align: center;
   align-items: center;
   justify-content: center;
   margin: 0 20px;
   padding: 5px;
-  background-color: rgb(241, 85, 24);
-  
+  background-color: #f15518;
 }
-
 .link-nav-m {
   text-align: center;
   color: white;
   font-size: medium;
   text-decoration: none;
   padding: 10px;
-  
 }
-
 .border-navbar-m {
   position: fixed;
   margin-top: 70px;
   width: 100%;
   height: 2px;
-  background-image: linear-gradient(to right, rgba(88, 87, 87, 0), rgba(88, 87, 87,1));
+  background-image: linear-gradient(to right, rgba(88, 87, 87, 0), #585757);
 }
-
-
-///////////////////////////////////end nav
-
-//modal styling
-#blah2{
-  font-family: 'Concert One', cursive;
+#blah2 {
+  font-family: "Concert One", cursive;
   text-align: center;
   color: white;
-  background: linear-gradient(
-    217deg,
-    rgb(241, 85, 24),
-    rgb(0, 0, 0) 89.71%
-  );
+  background: linear-gradient(217deg, #f15518, #000 89.71%);
 }
-#blah3{
+#blah3 {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 40%;
 }
-
-
-  

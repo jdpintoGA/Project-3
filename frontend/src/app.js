@@ -2,9 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-// import 'bulma'
+
 
 import '../styles/style.scss'
+import 'bulma'
 
 import Login from '../components/UserLogin'
 import Register from '../components/UserRegister'

@@ -21,19 +21,18 @@ class Events extends React.Component {
       modalActive: false
     }
   }
-
-  // eslint-disable-next-line camelcase
-  handleClick(featured_img_m) {
-    // eslint-disable-next-line camelcase
-    axios.get(`https://open.faceit.com/data/v4/games?offset=0&limit=20/${featured_img_m}`, {
-      headers: {
-        Authorization: 'Bearer 9a6523cf-c46d-434c-b623-3daeefa1acdb'
-      }
+  
+  
+  handleClick(game) {
+    this.setState({
+      selectedGame: game
     })
-      .then(response => {
-        this.setState({ singleGame: response.data })
-        this.toggleModal()
-      })
+  }
+
+  toggleModal() {
+    const newModal = !this.state.modalActive
+    this.setState({ modalActive: newModal })
+    this.setState({ selectedGame: null })
   }
 
   fetchAllGames() {
@@ -83,7 +82,7 @@ class Events extends React.Component {
 
   renderLeagues() {
     var moment = require('moment')
-    console.log('valid ' + moment("2020-04-09T22:00:00Z").isValid())
+    console.log('valid ' + moment('2020-04-09T22:00:00Z').isValid())
 
     if (!this.state.leagues) {
       return null
@@ -148,11 +147,6 @@ class Events extends React.Component {
 
     </>
   }
-  toggleModal() {
-    const newModal = !this.state.modalActive
-    this.setState({ modalActive: newModal })
-  }
-
 
 
 
@@ -228,15 +222,15 @@ class Events extends React.Component {
             {component}
 
           </div>
-
+          {this.state.selectedGame ? <GameModal
+            long_label={this.state.selectedGame.long_label}
+            cover={this.state.selectedGame.assets.cover}
+            platforms={this.state.selectedGame.platforms}
+            regions={this.state.selectedGame.regions}
+            featured_img_m={this.state.selectedGame.assets.featured_img_m}
+            toggleModal={() => this.toggleModal()} /> : null}
         </div>
       </section>
-      {this.state.modalActive ? <GameModal
-        long_label={this.state.singleGame.long_label}
-        platforms={this.state.singleGame.platforms}
-        regions={this.state.singleGame.regions}
-        featured_img_l={this.state.singleGame.featured_img_l}
-        toggleModal={() => this.toggleModal()} /> : null}
 
     </div>
   }
@@ -256,7 +250,7 @@ class Events extends React.Component {
         return <div
           key={game.game_id}
           className="container-image-m">
-          <img src={game.assets.featured_img_m} alt="" />
+          <img onClick={() => this.handleClick(game)} src={game.assets.featured_img_m} alt="" />
           <div className="container-platform-m">
             <h3>Platform: {game.platforms}</h3>
 

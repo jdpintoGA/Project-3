@@ -47,7 +47,7 @@ class CreateEvent extends React.Component {
           <div className="loginSectionJ">
             <div className="fillJ"></div>
             <div className="contentJ">
-              <h1 className="title-m">Create Event</h1>
+              <h1 className="title-g">Create Event</h1>
               <EventForm
                 handleSubmit={event => this.handleSubmit(event)}
                 handleChange={event => this.handleChange(event)}

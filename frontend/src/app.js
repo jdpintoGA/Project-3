@@ -19,7 +19,7 @@ const App = () => (
       <Route path="/login" component={Login} />
       <Route exact path="/" component={Home} />
       <Route exact path="/create" component={CreateEvent} />
-      <Route exact path="/events" component={Events} />
+      <Route exact path="/hub" component={Events} />
     </Switch>
   </BrowserRouter>
 )

@@ -83,7 +83,7 @@ class Events extends React.Component {
 
   renderLeagues() {
     var moment = require('moment')
-    console.log('valid ' + moment("2020-04-09T22:00:00Z").isValid())
+    console.log('valid ' + moment('2020-04-09T22:00:00Z').isValid())
 
     if (!this.state.leagues) {
       return null

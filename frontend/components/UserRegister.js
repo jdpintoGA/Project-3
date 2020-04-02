@@ -21,24 +21,20 @@ class Register extends React.Component {
     const { name, value } = event.target
     const data = { ...this.state.data, [name]: value }
     this.setState({ data })
-    console.log(this.state.data)
   }
 
   handleSubmit(event) {
-    console.log('submitting')
     event.preventDefault()
     axios
       .post('/api/register', this.state.data)
       .then(() => this.props.history.push('/login'))
       .catch(err => {
-        console.log(err)
         this.setState({ errors: err.response.data.errors })
       })
   }
 
   render() {
     const { errors } = this.state
-    console.log(errors)
     return (
       <div className="container-m">
         <NavBar />
@@ -63,7 +59,7 @@ class Register extends React.Component {
                     />
                   </div>
                   {errors.email && (
-                    <small className="help is-danger">
+                    <small className="error-message-m">
                       {errors.email.message}
                     </small>
                   )}
@@ -79,7 +75,7 @@ class Register extends React.Component {
                     />
                   </div>
                   {errors.username && (
-                    <small className="help is-danger">
+                    <small className="error-message-m">
                       {errors.username.message}
                     </small>
                   )}
@@ -95,7 +91,7 @@ class Register extends React.Component {
                     />
                   </div>
                   {errors.password && (
-                    <small className="help is-danger">
+                    <small className="error-message-m">
                       {errors.password.message}
                     </small>
                   )}
@@ -111,7 +107,7 @@ class Register extends React.Component {
                     />
                   </div>
                   {errors.passwordConfirmation && (
-                    <small className="help is-danger">
+                    <small className="error-message-m">
                       {errors.passwordConfirmation.message}
                     </small>
                   )}

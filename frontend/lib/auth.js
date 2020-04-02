@@ -4,7 +4,6 @@ function setToken(token) {
 
 function isLoggedIn() {
   const isLoggedIn = !!localStorage.getItem('token')
-  console.log('logged' + isLoggedIn)
   return isLoggedIn
 }
 

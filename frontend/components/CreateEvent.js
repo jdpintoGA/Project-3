@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import NavBar from './NavBar'
-// import bulma from 'bulma'
 
 import auth from '../lib/auth'
 import EventForm from './EventForm'

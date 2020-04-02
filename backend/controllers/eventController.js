@@ -1,7 +1,7 @@
 const EventModel = require('../models/eventModel')
 
 function index(req, res) {
-  // Find all our event (asynchronous!) and send them back when done
+  
   EventModel.find()
     .populate('user')
     .then(event => {
@@ -10,8 +10,7 @@ function index(req, res) {
 }
 
 function createEvent(req, res) {
-  // Create our new event with the logged in user
-  // secureRoute adds the currentUser to our request
+
   req.body.user = req.currentUser
   EventModel.create(req.body)
     .then(event => {
@@ -24,7 +23,7 @@ function createEvent(req, res) {
 }
 
 function find(req, res) {
-  // Return a single event
+
   const id = req.params.id
   EventModel.findById(id).then(event => {
     res.send(event)
@@ -32,7 +31,7 @@ function find(req, res) {
 }
 
 function singleDelete(req, res) {
-  // Delete our event
+
   const currentUser = req.currentUser
   const id = req.params.id
   EventModel.findById(id)
@@ -49,7 +48,7 @@ function singleDelete(req, res) {
 }
 
 function edit(req, res) {
-  // Edit a(n) event
+
   const currentUser = req.currentUser
   const id = req.params.id
   EventModel.findById(id)

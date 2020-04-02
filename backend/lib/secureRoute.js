@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 function secureRoute(req, res, next) {
   const authToken = req.headers.authorization
   if (!authToken || !authToken.startsWith('Bearer')) {
-    //until this moment, no token acquired
+
     return res.status(401).send({ message: 'Unauthorized, invalid LogIn ' })
   }
 
@@ -15,10 +15,9 @@ function secureRoute(req, res, next) {
 
     User.findById(payload.sub)
       .then(user => {
-        // If there's no user with the user.id, the token is expired
         if (!user) return res.status(403).send({ message: 'No user was Found' })
         req.currentUser = user
-        next() // Finish this middleware, let express know we're done
+        next() 
       })
       .catch(() =>
         res

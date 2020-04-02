@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import NavBar from './NavBar'
-// import bulma from 'bulma'
 
 import auth from '../lib/auth'
 import EventForm from './EventForm'
@@ -35,7 +34,7 @@ class CreateEvent extends React.Component {
       .post('/api/events', this.state.data, {
         headers: { Authorization: `Bearer ${auth.getToken()}` }
       })
-      .then(res => this.props.history.push(`/hub`))
+      .then(() => this.props.history.push('/hub'))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 

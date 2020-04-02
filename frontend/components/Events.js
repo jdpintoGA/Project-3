@@ -8,6 +8,8 @@ import NavBar from '../components/NavBar'
 import Nav from '../components/Nav'
 import GameModal from '../components/GameModal'
 
+
+
 class Events extends React.Component {
   constructor() {
     super()
@@ -58,7 +60,7 @@ class Events extends React.Component {
 
   //local events
   fetchLocalEvents() {
-    // console.log('Fetching Local Events')
+
     axios
       .get('/api/events')
       .then(res => {
@@ -66,29 +68,13 @@ class Events extends React.Component {
           localEvents: res.data,
           currentSelection: 'LocalEvents'
         })
-        // console.log(res.data)
+
       })
       .catch(error => console.error(error))
   }
 
-  //users
-  // fetchUsers() {
-  //   console.log('User Db Tracked. Commence matching!')
-  //   axios
-  //     .get('/api/users')
-  //     .then(res => {
-  //       this.setState({
-  //         users: res.data
-  //       })
-  //     })
-  //     .catch(error => console.error(error))
-  // }
 
-  handleLocalEvents() {
-    console.log('Handling Local Events')
-    // this.fetchUsers()
-    this.fetchLocalEvents()
-  }
+
 
   fetchLiveGames() {
     axios
@@ -102,7 +88,34 @@ class Events extends React.Component {
       .catch(error => console.error(error))
   }
   componentDidMount() {
-    this.fetchAllGames()
+    console.log(this.props.location.state)
+    if (this.props.location.state === null) {
+      console.log('null state')
+      this.fetchAllGames()
+    } else {
+
+      console.log(this.props.location.state)
+      const currentState = this.props.location.state.currentSelection
+      console.log(currentState)
+
+      if (currentState === 'Games') {
+        console.log('selected Games')
+        this.fetchAllGames()
+      } else if (currentState === 'Leagues'){
+        this.fetchLeagues()
+
+      } else if (currentState === 'LocalEvents'){
+        this.fetchLocalEvents()
+      
+      } else if (currentState === 'LiveGames'){
+        this.fetchLiveGames()
+      }
+
+    }
+  }
+
+  handleLocalEvents() {
+    this.fetchLocalEvents()
   }
   handleGames() {
     this.fetchAllGames()
@@ -129,7 +142,7 @@ class Events extends React.Component {
       component = this.renderLocalEvents()
     }
     console.log(component)
-    // const { image } = this.state.games.featured_img_m
+
     return (
       <div className="event-wrap-m">
         <NavBar />
@@ -228,7 +241,6 @@ class Events extends React.Component {
 
   renderGames() {
     if (!this.state.games) {
-      // console.log('rendering -> null')
       return null
     }
     return (
@@ -282,11 +294,7 @@ class Events extends React.Component {
           </div>
         </div>
         {this.state.localEvents.map((event, i) => {
-          // if (event.platform === '') {
-          //   return null
-          // } else if (event.location === '') {
-          //   return null
-          // }
+
           return (
             <div key={i} className="leagues-section-j">
               <div className="cell-bar-j">
@@ -366,12 +374,10 @@ class Events extends React.Component {
                       <div className="opponent-name-m">
                         {game.match.opponents[0].opponent.name}
                       </div>
-                      {/* <div className="opponent-img-m"> */}
                       <img
                         src={game.match.opponents[0].opponent.image_url}
                         alt="Image"
                       />
-                      {/* </div> */}
                     </div>
                     <div className="container-location-score-m">
                       <div className="location-m">
@@ -390,15 +396,12 @@ class Events extends React.Component {
                       <div className="opponent-name-m">
                         {game.match.opponents[1].opponent.name}
                       </div>
-                      {/* <div className="opponent-img-m"> */}
                       <img
                         src={game.match.opponents[1].opponent.image_url}
                         alt="Image"
                       />
-                      {/* </div> */}
                     </div>
                     <div className="container-location-score-m" id="two">
-                      {/* <div className="container-location-m"> */}
                       <div className="location-m">
                         Location
                         <h4>{game.match.opponents[1].opponent.location}</h4>
@@ -407,7 +410,6 @@ class Events extends React.Component {
                         Score
                         <h4>{game.match.results[1].score}</h4>
                       </div>
-                      {/* </div> */}
                     </div>
                   </div>
                 </div>
@@ -441,10 +443,10 @@ class Events extends React.Component {
             <h2>Leagues</h2>
           </div>
           <div className="leagues-name-m">
-            <h2>Tournaments Name</h2>
+            <h2>Tournament Name</h2>
           </div>
           <div className="leagues-name-m">
-            <h2>Tournaments Date</h2>
+            <h2>Tournament Date</h2>
           </div>
         </div>
         {this.state.leagues.map(league => {

@@ -50,8 +50,8 @@
 .nav-m {
   position: absolute;
   width: 24vw;
-  background: linear-gradient(217deg, rgb(241, 85, 24), rgb(0, 0, 0) 89.71%);
-
+  // background: linear-gradient(217deg, rgb(241, 85, 24), rgb(0, 0, 0) 89.71%);
+  background-color: rgb(241, 85, 24);
   height: 100vh;
   padding: 80px 20px;
   display: flex;
@@ -95,6 +95,36 @@
   transition: 0.5s;
 }
 
+
+.container-home-m {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 900px;
+  height: 90vh;
+}
+
+.gamepng-m {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 25%;
+  height: 60vh;
+}
+
+.gamepng-m img {
+  margin-top: 220px;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.gamepng-m p {
+  font-size: 18px;
+}
+
 .content-m {
   display: flex;
   flex-direction: column;
@@ -103,29 +133,6 @@
   padding: 2em 4em;
   max-width: 800px;
   height: 90vh;
-}
-
-.container-games-m {
-  display: flex;
-  flex-direction: wrap;
-}
-
-.image-container-m {
-  padding: 20px;
-  margin-top: 50px;
-}
-
-.games-image-m:hover {
-  transform: scale(1.4, 1.4);
-  cursor: pointer;
-}
-
-.games-image-m {
-  transition: all 0.4s ease-in-out;
-}
-
-.container-creacc-login-m {
-  display: flex;
 }
 
 #check:checked + label ~ .section-m {
@@ -159,13 +166,25 @@
   justify-content: flex-end;
   justify-content: space-around;
   align-self: center;
-  width: 25%;
+  width: 35%;
+}
+
+.name-placeholder-m {
+  padding: 5px;
 }
 
 .git-links-m {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
+  
 }
+
+.linksgit-m {
+  display: flex;
+  justify-content: space-around;
+}
+
+
 
 ///////////////////////////////////////////////////// end Footer
 
@@ -201,6 +220,12 @@
       margin-right: -25px;
       min-height: 350px;
 
+      .title-m {
+        font-size: 28px;
+        font-weight: 600;
+        color: white;
+      }
+
       .fieldJ {
         color: rgb(46, 46, 46);
       }
@@ -229,7 +254,7 @@
         background-color: black;
         color: rgb(255, 255, 255);
         margin-top: 2px;
-        padding: 2px 5px;
+        padding: 10px 25px;
         &:hover {
           background-color: rgb(255, 255, 255);
           color: rgb(0, 0, 0);
@@ -370,7 +395,7 @@
   width: 180px;
   background-color: rgb(241, 85, 24);
   margin-left: 120px;
-  margin-top: 62px;
+  margin-top: 70px;
   border: 2px solid grey;
 }
 
@@ -529,6 +554,7 @@ h2 {
   padding-left: 100px;
   // justify-content: center;
   text-align: center;
+  font-size: 24px;
 }
 
 .leagues-name-m {
@@ -536,6 +562,7 @@ h2 {
   display: flex;
   line-height: 70px;
   padding-left: 40px;
+  font-size: 24px;
   // justify-content: space-around;
   text-align: center;
 }
@@ -681,13 +708,21 @@ h2 {
     max-width: 25%;
     display: flex;
     line-height: 70px;
+    
+
+    h2 {
+      font-size: 26px;
+      font-weight: 400;
+    }
   }
   .join-j {
     min-width: 10%;
     display: flex;
     line-height: 70px;
     h2 {
+      font-size: 26px;
       color: red;
+      font-weight: 500;
     }
   }
 }
@@ -919,3 +954,8 @@ h4 {
 }
 
 ///////////////////////////////////////end LiveGames
+
+
+.error-message-m {
+  color: rgb(255, 255, 255);
+}

@@ -75,11 +75,9 @@ class Login extends React.Component {
                   </div>
                   {error && <small className="red">{error}</small>}
                 </div>
-                {/* <Link to="/"> */}
                 <button className="buttonJ" type="submit">
                   Login
                 </button>
-                {/* </Link> */}
               </form>
             </div>
             <div className="fillJ"></div>

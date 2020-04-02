@@ -13,9 +13,7 @@ class Nav extends React.Component {
   }
 
   handleLogout() {
-    console.log('log')
     auth.logout()
-    //this.props.history.push('/')
   }
 
   render() {
@@ -45,7 +43,6 @@ class Nav extends React.Component {
 
       <div className="border-navbar-m">
       </div>
-
 
     </>
   }

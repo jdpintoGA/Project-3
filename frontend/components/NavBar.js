@@ -9,9 +9,7 @@ class NavBar extends React.Component {
   }
 
   handleLogout() {
-    console.log('log')
     auth.logout()
-    //this.props.history.push('/')
   }
 
   render() {

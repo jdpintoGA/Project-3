@@ -25,6 +25,12 @@ mongoose.connect(
             email: 'BabumbaBab@BabumbaBab.com',
             password: 'gabi1234',
             passwordConfirmation: 'gabi1234'
+          },
+          {
+            username: 'Marius',
+            email: 'marius1@yahoo.com',
+            password: 'marius',
+            passwordConfirmation: 'marius'
           }
         ])
       })

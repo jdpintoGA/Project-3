@@ -31,7 +31,7 @@ class CreateEvent extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     axios
-      .post('/api/events', this.state.data, {
+      .post('/api/hub', this.state.data, {
         headers: { Authorization: `Bearer ${auth.getToken()}` }
       })
       .then(() => this.props.history.push('/hub'))

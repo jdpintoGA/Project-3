@@ -11,8 +11,8 @@ import GameModal from '../components/GameModal'
 
 
 class Events extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       games: null,
       events: null,
@@ -62,7 +62,7 @@ class Events extends React.Component {
   fetchLocalEvents() {
 
     axios
-      .get('/api/events')
+      .get('/api/hub')
       .then(res => {
         this.setState({
           localEvents: res.data,
@@ -88,30 +88,32 @@ class Events extends React.Component {
       .catch(error => console.error(error))
   }
   componentDidMount() {
-    console.log(this.props.location.state)
-    if (this.props.location.state === null) {
-      console.log('null state')
-      this.fetchAllGames()
-    } else {
-
-      console.log(this.props.location.state)
-      const currentState = this.props.location.state.currentSelection
-      console.log(currentState)
-
-      if (currentState === 'Games') {
-        console.log('selected Games')
-        this.fetchAllGames()
-      } else if (currentState === 'Leagues'){
-        this.fetchLeagues()
-
-      } else if (currentState === 'LocalEvents'){
-        this.fetchLocalEvents()
+    // console.log(this.props.location.state)
+    // if (this.props.location.state === null) {
+    //   console.log('null state')
       
-      } else if (currentState === 'LiveGames'){
-        this.fetchLiveGames()
-      }
+    // }
+    this.fetchAllGames()
+    //  else if (this.props.location.state !== null && this.props.location.state.currentSelection !== null){
 
-    }
+    //   console.log(this.props.location.state)
+    //   const currentState = this.props.location.state.currentSelection
+    //   console.log(currentState)
+
+    //   if (currentState === 'Games') {
+    //     console.log('selected Games')
+    //     this.fetchAllGames()
+    //   } else if (currentState === 'Leagues'){
+    //     this.fetchLeagues()
+
+    //   } else if (currentState === 'LocalEvents'){
+    //     this.fetchLocalEvents()
+      
+    //   } else if (currentState === 'LiveGames'){
+    //     this.fetchLiveGames()
+    //   }
+
+    // }
   }
 
   handleLocalEvents() {

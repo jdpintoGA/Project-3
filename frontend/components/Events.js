@@ -60,7 +60,7 @@ class Events extends React.Component {
   fetchLocalEvents() {
     // console.log('Fetching Local Events')
     axios
-      .get('/api/events')
+      .get('/api/hub')
       .then(res => {
         this.setState({
           localEvents: res.data,

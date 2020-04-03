@@ -2,16 +2,19 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const router = require('./router')
+const { dbURI, port } = require('./config/environment')
+const path = require('path')
+const dist = path.join(__dirname, 'dist')
+
 mongoose.connect(
-  'mongodb://localhost/events-db',
+  dbURI,
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
-  
+
   err => {
     if (err) console.log(err)
     else console.log('Mongoose connected to events-db!')
   }
 )
-
 
 const expressServer = express()
 
@@ -24,7 +27,6 @@ expressServer.all('*', function(req, res, next) {
 
 expressServer.use(bodyParser.json())
 
-
 expressServer.use((req, res, next) => {
   console.log(`Incoming ${req.method} to ${req.url}`)
   next()
@@ -32,5 +34,15 @@ expressServer.use((req, res, next) => {
 
 expressServer.use('/api', router)
 
+expressServer.use('/', express.static(dist))
 
-expressServer.listen(8000)
+expressServer.get('*', function(req, res) {
+  res.sendFile(path.join(dist, 'index.html'))
+})
+
+// Listen on our port!
+expressServer.listen(port, () =>
+  console.log(`We are good to go on port ${port}`)
+)
+
+module.exports = expressServer

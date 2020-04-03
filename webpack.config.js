@@ -6,16 +6,18 @@ module.exports = {
   entry: './frontend/src/app.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve('dist'),
+    path: path.resolve('./backend/dist'),
     publicPath: '/'
   },
   module: {
     rules: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.css$/, loader: ['style-loader', 'css-loader'] },
-      { test: /\.s(a|c)ss$/, loader: ['style-loader', 'css-loader', 'sass-loader'] },
+      {
+        test: /\.s(a|c)ss$/,
+        loader: ['style-loader', 'css-loader', 'sass-loader']
+      },
       { test: /\.(gif|png|jpg|svg)(\?.*$|$)/, use: [{ loader: 'url-loader' }] }
-      
     ]
   },
   devServer: {
